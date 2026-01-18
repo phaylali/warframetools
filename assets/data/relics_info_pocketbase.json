@@ -1,0 +1,1527 @@
+
+  {
+    "id": "pbc_409198840",
+    "listRule": "",
+    "viewRule": "",
+    "createRule": "",
+    "updateRule": "",
+    "deleteRule": "",
+    "name": "relics_info",
+    "type": "base",
+    "fields": [
+      {
+        "gid": "lith_a1",
+        "name": "Lith A1",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_a2",
+        "name": "Lith A2",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_a3",
+        "name": "Lith A3",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_a4",
+        "name": "Lith A4",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_a5",
+        "name": "Lith A5",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_a6",
+        "name": "Lith A6",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_a7",
+        "name": "Lith A7",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_a8",
+        "name": "Lith A8",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_a9",
+        "name": "Lith A9",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_b1",
+        "name": "Lith B1",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_b2",
+        "name": "Lith B2",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_b3",
+        "name": "Lith B3",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_b4",
+        "name": "Lith B4",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_b5",
+        "name": "Lith B5",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_b6",
+        "name": "Lith B6",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_b7",
+        "name": "Lith B7",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_b8",
+        "name": "Lith B8",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_b9",
+        "name": "Lith B9",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_c1",
+        "name": "Lith C1",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_c2",
+        "name": "Lith C2",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_c3",
+        "name": "Lith C3",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_c4",
+        "name": "Lith C4",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_c5",
+        "name": "Lith C5",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_c6",
+        "name": "Lith C6",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_c7",
+        "name": "Lith C7",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_c8",
+        "name": "Lith C8",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_c9",
+        "name": "Lith C9",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_d1",
+        "name": "Lith D1",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_d2",
+        "name": "Lith D2",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_d3",
+        "name": "Lith D3",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_d4",
+        "name": "Lith D4",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_e1",
+        "name": "Lith E1",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_e2",
+        "name": "Lith E2",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_e3",
+        "name": "Lith E3",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_e4",
+        "name": "Lith E4",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_e5",
+        "name": "Lith E5",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_e6",
+        "name": "Lith E6",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_f1",
+        "name": "Lith F1",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_f2",
+        "name": "Lith F2",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_f3",
+        "name": "Lith F3",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_f4",
+        "name": "Lith F4",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_f5",
+        "name": "Lith F5",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_g1",
+        "name": "Lith G1",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_g2",
+        "name": "Lith G2",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_h1",
+        "name": "Lith H1",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_h2",
+        "name": "Lith H2",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_h3",
+        "name": "Lith H3",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_h4",
+        "name": "Lith H4",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_h5",
+        "name": "Lith H5",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_i1",
+        "name": "Lith I1",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_i2",
+        "name": "Lith I2",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_i3",
+        "name": "Lith I3",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_j1",
+        "name": "Lith J1",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_j2",
+        "name": "Lith J2",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_j3",
+        "name": "Lith J3",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_j4",
+        "name": "Lith J4",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_k1",
+        "name": "Lith K1",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_k2",
+        "name": "Lith K2",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_k3",
+        "name": "Lith K3",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_l1",
+        "name": "Lith L1",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_l2",
+        "name": "Lith L2",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_l3",
+        "name": "Lith L3",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_l4",
+        "name": "Lith L4",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_m1",
+        "name": "Lith M1",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_m2",
+        "name": "Lith M2",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_m3",
+        "name": "Lith M3",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_m4",
+        "name": "Lith M4",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_n1",
+        "name": "Lith N1",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_n2",
+        "name": "Lith N2",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_n3",
+        "name": "Lith N3",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_n4",
+        "name": "Lith N4",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_o1",
+        "name": "Lith O1",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_p1",
+        "name": "Lith P1",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_p2",
+        "name": "Lith P2",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_p3",
+        "name": "Lith P3",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_q1",
+        "name": "Lith Q1",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_q2",
+        "name": "Lith Q2",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_r1",
+        "name": "Lith R1",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_r2",
+        "name": "Lith R2",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_r3",
+        "name": "Lith R3",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_r4",
+        "name": "Lith R4",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_s1",
+        "name": "Lith S1",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_s2",
+        "name": "Lith S2",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_s3",
+        "name": "Lith S3",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_s4",
+        "name": "Lith S4",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_t1",
+        "name": "Lith T1",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_t2",
+        "name": "Lith T2",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_t3",
+        "name": "Lith T3",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_u1",
+        "name": "Lith U1",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_u2",
+        "name": "Lith U2",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_u3",
+        "name": "Lith U3",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_u4",
+        "name": "Lith U4",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_v1",
+        "name": "Lith V1",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_v2",
+        "name": "Lith V2",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_w1",
+        "name": "Lith W1",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_w2",
+        "name": "Lith W2",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_w3",
+        "name": "Lith W3",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_x1",
+        "name": "Lith X1",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_x2",
+        "name": "Lith X2",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_y1",
+        "name": "Lith Y1",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_y2",
+        "name": "Lith Y2",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_y3",
+        "name": "Lith Y3",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_z1",
+        "name": "Lith Z1",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_z2",
+        "name": "Lith Z2",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_z3",
+        "name": "Lith Z3",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "lith_z4",
+        "name": "Lith Z4",
+        "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+        "type": "lith"
+      },
+      {
+        "gid": "meso_a1",
+        "name": "Meso A1",
+        "imageUrl": "https://wiki.warframe.com/images/MesoRelicIntact.png?ee7d7",
+        "type": "meso"
+      },
+      {
+        "gid": "meso_a2",
+        "name": "Meso A2",
+        "imageUrl": "https://wiki.warframe.com/images/MesoRelicIntact.png?ee7d7",
+        "type": "meso"
+      },
+      {
+        "gid": "meso_a3",
+        "name": "Meso A3",
+        "imageUrl": "https://wiki.warframe.com/images/MesoRelicIntact.png?ee7d7",
+        "type": "meso"
+      },
+      {
+        "gid": "meso_a4",
+        "name": "Meso A4",
+        "imageUrl": "https://wiki.warframe.com/images/MesoRelicIntact.png?ee7d7",
+        "type": "meso"
+      },
+      {
+        "gid": "meso_a5",
+        "name": "Meso A5",
+        "imageUrl": "https://wiki.warframe.com/images/MesoRelicIntact.png?ee7d7",
+        "type": "meso"
+      },
+      {
+        "gid": "meso_a6",
+        "name": "Meso A6",
+        "imageUrl": "https://wiki.warframe.com/images/MesoRelicIntact.png?ee7d7",
+        "type": "meso"
+      },
+      {
+        "gid": "meso_b1",
+        "name": "Meso B1",
+        "imageUrl": "https://wiki.warframe.com/images/MesoRelicIntact.png?ee7d7",
+        "type": "meso"
+      },
+      {
+        "gid": "meso_b2",
+        "name": "Meso B2",
+        "imageUrl": "https://wiki.warframe.com/images/MesoRelicIntact.png?ee7d7",
+        "type": "meso"
+      },
+      {
+        "gid": "meso_b3",
+        "name": "Meso B3",
+        "imageUrl": "https://wiki.warframe.com/images/MesoRelicIntact.png?ee7d7",
+        "type": "meso"
+      },
+      {
+        "gid": "meso_b4",
+        "name": "Meso B4",
+        "imageUrl": "https://wiki.warframe.com/images/MesoRelicIntact.png?ee7d7",
+        "type": "meso"
+      },
+      {
+        "gid": "meso_c1",
+        "name": "Meso C1",
+        "imageUrl": "https://wiki.warframe.com/images/MesoRelicIntact.png?ee7d7",
+        "type": "meso"
+      },
+      {
+        "gid": "meso_c2",
+        "name": "Meso C2",
+        "imageUrl": "https://wiki.warframe.com/images/MesoRelicIntact.png?ee7d7",
+        "type": "meso"
+      },
+      {
+        "gid": "meso_c3",
+        "name": "Meso C3",
+        "imageUrl": "https://wiki.warframe.com/images/MesoRelicIntact.png?ee7d7",
+        "type": "meso"
+      },
+      {
+        "gid": "meso_c4",
+        "name": "Meso C4",
+        "imageUrl": "https://wiki.warframe.com/images/MesoRelicIntact.png?ee7d7",
+        "type": "meso"
+      },
+      {
+        "gid": "meso_d1",
+        "name": "Meso D1",
+        "imageUrl": "https://wiki.warframe.com/images/MesoRelicIntact.png?ee7d7",
+        "type": "meso"
+      },
+      {
+        "gid": "meso_d2",
+        "name": "Meso D2",
+        "imageUrl": "https://wiki.warframe.com/images/MesoRelicIntact.png?ee7d7",
+        "type": "meso"
+      },
+      {
+        "gid": "meso_e1",
+        "name": "Meso E1",
+        "imageUrl": "https://wiki.warframe.com/images/MesoRelicIntact.png?ee7d7",
+        "type": "meso"
+      },
+      {
+        "gid": "meso_e2",
+        "name": "Meso E2",
+        "imageUrl": "https://wiki.warframe.com/images/MesoRelicIntact.png?ee7d7",
+        "type": "meso"
+      },
+      {
+        "gid": "meso_e3",
+        "name": "Meso E3",
+        "imageUrl": "https://wiki.warframe.com/images/MesoRelicIntact.png?ee7d7",
+        "type": "meso"
+      },
+      {
+        "gid": "meso_f1",
+        "name": "Meso F1",
+        "imageUrl": "https://wiki.warframe.com/images/MesoRelicIntact.png?ee7d7",
+        "type": "meso"
+      },
+      {
+        "gid": "meso_f2",
+        "name": "Meso F2",
+        "imageUrl": "https://wiki.warframe.com/images/MesoRelicIntact.png?ee7d7",
+        "type": "meso"
+      },
+      {
+        "gid": "meso_f3",
+        "name": "Meso F3",
+        "imageUrl": "https://wiki.warframe.com/images/MesoRelicIntact.png?ee7d7",
+        "type": "meso"
+      },
+      {
+        "gid": "meso_g1",
+        "name": "Meso G1",
+        "imageUrl": "https://wiki.warframe.com/images/MesoRelicIntact.png?ee7d7",
+        "type": "meso"
+      },
+      {
+        "gid": "meso_h1",
+        "name": "Meso H1",
+        "imageUrl": "https://wiki.warframe.com/images/MesoRelicIntact.png?ee7d7",
+        "type": "meso"
+      },
+      {
+        "gid": "meso_h2",
+        "name": "Meso H2",
+        "imageUrl": "https://wiki.warframe.com/images/MesoRelicIntact.png?ee7d7",
+        "type": "meso"
+      },
+      {
+        "gid": "meso_i1",
+        "name": "Meso I1",
+        "imageUrl": "https://wiki.warframe.com/images/MesoRelicIntact.png?ee7d7",
+        "type": "meso"
+      },
+      {
+        "gid": "meso_j1",
+        "name": "Meso J1",
+        "imageUrl": "https://wiki.warframe.com/images/MesoRelicIntact.png?ee7d7",
+        "type": "meso"
+      },
+      {
+        "gid": "meso_k1",
+        "name": "Meso K1",
+        "imageUrl": "https://wiki.warframe.com/images/MesoRelicIntact.png?ee7d7",
+        "type": "meso"
+      },
+      {
+        "gid": "meso_l1",
+        "name": "Meso L1",
+        "imageUrl": "https://wiki.warframe.com/images/MesoRelicIntact.png?ee7d7",
+        "type": "meso"
+      },
+      {
+        "gid": "meso_m1",
+        "name": "Meso M1",
+        "imageUrl": "https://wiki.warframe.com/images/MesoRelicIntact.png?ee7d7",
+        "type": "meso"
+      },
+      {
+        "gid": "meso_n1",
+        "name": "Meso N1",
+        "imageUrl": "https://wiki.warframe.com/images/MesoRelicIntact.png?ee7d7",
+        "type": "meso"
+      },
+      {
+        "gid": "meso_o1",
+        "name": "Meso O1",
+        "imageUrl": "https://wiki.warframe.com/images/MesoRelicIntact.png?ee7d7",
+        "type": "meso"
+      },
+      {
+        "gid": "meso_p1",
+        "name": "Meso P1",
+        "imageUrl": "https://wiki.warframe.com/images/MesoRelicIntact.png?ee7d7",
+        "type": "meso"
+      },
+      {
+        "gid": "meso_q1",
+        "name": "Meso Q1",
+        "imageUrl": "https://wiki.warframe.com/images/MesoRelicIntact.png?ee7d7",
+        "type": "meso"
+      },
+      {
+        "gid": "meso_r1",
+        "name": "Meso R1",
+        "imageUrl": "https://wiki.warframe.com/images/MesoRelicIntact.png?ee7d7",
+        "type": "meso"
+      },
+      {
+        "gid": "meso_s1",
+        "name": "Meso S1",
+        "imageUrl": "https://wiki.warframe.com/images/MesoRelicIntact.png?ee7d7",
+        "type": "meso"
+      },
+      {
+        "gid": "meso_s2",
+        "name": "Meso S2",
+        "imageUrl": "https://wiki.warframe.com/images/MesoRelicIntact.png?ee7d7",
+        "type": "meso"
+      },
+      {
+        "gid": "meso_t1",
+        "name": "Meso T1",
+        "imageUrl": "https://wiki.warframe.com/images/MesoRelicIntact.png?ee7d7",
+        "type": "meso"
+      },
+      {
+        "gid": "meso_u1",
+        "name": "Meso U1",
+        "imageUrl": "https://wiki.warframe.com/images/MesoRelicIntact.png?ee7d7",
+        "type": "meso"
+      },
+      {
+        "gid": "meso_v1",
+        "name": "Meso V1",
+        "imageUrl": "https://wiki.warframe.com/images/MesoRelicIntact.png?ee7d7",
+        "type": "meso"
+      },
+      {
+        "gid": "meso_w1",
+        "name": "Meso W1",
+        "imageUrl": "https://wiki.warframe.com/images/MesoRelicIntact.png?ee7d7",
+        "type": "meso"
+      },
+      {
+        "gid": "meso_x1",
+        "name": "Meso X1",
+        "imageUrl": "https://wiki.warframe.com/images/MesoRelicIntact.png?ee7d7",
+        "type": "meso"
+      },
+      {
+        "gid": "meso_y1",
+        "name": "Meso Y1",
+        "imageUrl": "https://wiki.warframe.com/images/MesoRelicIntact.png?ee7d7",
+        "type": "meso"
+      },
+      {
+        "gid": "meso_z1",
+        "name": "Meso Z1",
+        "imageUrl": "https://wiki.warframe.com/images/MesoRelicIntact.png?ee7d7",
+        "type": "meso"
+      },
+      {
+        "gid": "neo_a1",
+        "name": "Neo A1",
+        "imageUrl": "https://wiki.warframe.com/images/NeoRelicIntact.png?ee7d7",
+        "type": "neo"
+      },
+      {
+        "gid": "neo_a2",
+        "name": "Neo A2",
+        "imageUrl": "https://wiki.warframe.com/images/NeoRelicIntact.png?ee7d7",
+        "type": "neo"
+      },
+      {
+        "gid": "neo_a3",
+        "name": "Neo A3",
+        "imageUrl": "https://wiki.warframe.com/images/NeoRelicIntact.png?ee7d7",
+        "type": "neo"
+      },
+      {
+        "gid": "neo_a4",
+        "name": "Neo A4",
+        "imageUrl": "https://wiki.warframe.com/images/NeoRelicIntact.png?ee7d7",
+        "type": "neo"
+      },
+      {
+        "gid": "neo_a5",
+        "name": "Neo A5",
+        "imageUrl": "https://wiki.warframe.com/images/NeoRelicIntact.png?ee7d7",
+        "type": "neo"
+      },
+      {
+        "gid": "neo_a6",
+        "name": "Neo A6",
+        "imageUrl": "https://wiki.warframe.com/images/NeoRelicIntact.png?ee7d7",
+        "type": "neo"
+      },
+      {
+        "gid": "neo_a7",
+        "name": "Neo A7",
+        "imageUrl": "https://wiki.warframe.com/images/NeoRelicIntact.png?ee7d7",
+        "type": "neo"
+      },
+      {
+        "gid": "neo_a8",
+        "name": "Neo A8",
+        "imageUrl": "https://wiki.warframe.com/images/NeoRelicIntact.png?ee7d7",
+        "type": "neo"
+      },
+      {
+        "gid": "neo_b1",
+        "name": "Neo B1",
+        "imageUrl": "https://wiki.warframe.com/images/NeoRelicIntact.png?ee7d7",
+        "type": "neo"
+      },
+      {
+        "gid": "neo_b2",
+        "name": "Neo B2",
+        "imageUrl": "https://wiki.warframe.com/images/NeoRelicIntact.png?ee7d7",
+        "type": "neo"
+      },
+      {
+        "gid": "neo_b3",
+        "name": "Neo B3",
+        "imageUrl": "https://wiki.warframe.com/images/NeoRelicIntact.png?ee7d7",
+        "type": "neo"
+      },
+      {
+        "gid": "neo_b4",
+        "name": "Neo B4",
+        "imageUrl": "https://wiki.warframe.com/images/NeoRelicIntact.png?ee7d7",
+        "type": "neo"
+      },
+      {
+        "gid": "neo_c1",
+        "name": "Neo C1",
+        "imageUrl": "https://wiki.warframe.com/images/NeoRelicIntact.png?ee7d7",
+        "type": "neo"
+      },
+      {
+        "gid": "neo_c2",
+        "name": "Neo C2",
+        "imageUrl": "https://wiki.warframe.com/images/NeoRelicIntact.png?ee7d7",
+        "type": "neo"
+      },
+      {
+        "gid": "neo_c3",
+        "name": "Neo C3",
+        "imageUrl": "https://wiki.warframe.com/images/NeoRelicIntact.png?ee7d7",
+        "type": "neo"
+      },
+      {
+        "gid": "neo_d1",
+        "name": "Neo D1",
+        "imageUrl": "https://wiki.warframe.com/images/NeoRelicIntact.png?ee7d7",
+        "type": "neo"
+      },
+      {
+        "gid": "neo_d2",
+        "name": "Neo D2",
+        "imageUrl": "https://wiki.warframe.com/images/NeoRelicIntact.png?ee7d7",
+        "type": "neo"
+      },
+      {
+        "gid": "neo_d3",
+        "name": "Neo D3",
+        "imageUrl": "https://wiki.warframe.com/images/NeoRelicIntact.png?ee7d7",
+        "type": "neo"
+      },
+      {
+        "gid": "neo_e1",
+        "name": "Neo E1",
+        "imageUrl": "https://wiki.warframe.com/images/NeoRelicIntact.png?ee7d7",
+        "type": "neo"
+      },
+      {
+        "gid": "neo_e2",
+        "name": "Neo E2",
+        "imageUrl": "https://wiki.warframe.com/images/NeoRelicIntact.png?ee7d7",
+        "type": "neo"
+      },
+      {
+        "gid": "neo_f1",
+        "name": "Neo F1",
+        "imageUrl": "https://wiki.warframe.com/images/NeoRelicIntact.png?ee7d7",
+        "type": "neo"
+      },
+      {
+        "gid": "neo_f2",
+        "name": "Neo F2",
+        "imageUrl": "https://wiki.warframe.com/images/NeoRelicIntact.png?ee7d7",
+        "type": "neo"
+      },
+      {
+        "gid": "neo_f3",
+        "name": "Neo F3",
+        "imageUrl": "https://wiki.warframe.com/images/NeoRelicIntact.png?ee7d7",
+        "type": "neo"
+      },
+      {
+        "gid": "neo_g1",
+        "name": "Neo G1",
+        "imageUrl": "https://wiki.warframe.com/images/NeoRelicIntact.png?ee7d7",
+        "type": "neo"
+      },
+      {
+        "gid": "neo_h1",
+        "name": "Neo H1",
+        "imageUrl": "https://wiki.warframe.com/images/NeoRelicIntact.png?ee7d7",
+        "type": "neo"
+      },
+      {
+        "gid": "neo_h2",
+        "name": "Neo H2",
+        "imageUrl": "https://wiki.warframe.com/images/NeoRelicIntact.png?ee7d7",
+        "type": "neo"
+      },
+      {
+        "gid": "neo_i1",
+        "name": "Neo I1",
+        "imageUrl": "https://wiki.warframe.com/images/NeoRelicIntact.png?ee7d7",
+        "type": "neo"
+      },
+      {
+        "gid": "neo_j1",
+        "name": "Neo J1",
+        "imageUrl": "https://wiki.warframe.com/images/NeoRelicIntact.png?ee7d7",
+        "type": "neo"
+      },
+      {
+        "gid": "neo_k1",
+        "name": "Neo K1",
+        "imageUrl": "https://wiki.warframe.com/images/NeoRelicIntact.png?ee7d7",
+        "type": "neo"
+      },
+      {
+        "gid": "neo_l1",
+        "name": "Neo L1",
+        "imageUrl": "https://wiki.warframe.com/images/NeoRelicIntact.png?ee7d7",
+        "type": "neo"
+      },
+      {
+        "gid": "neo_m1",
+        "name": "Neo M1",
+        "imageUrl": "https://wiki.warframe.com/images/NeoRelicIntact.png?ee7d7",
+        "type": "neo"
+      },
+      {
+        "gid": "neo_n1",
+        "name": "Neo N1",
+        "imageUrl": "https://wiki.warframe.com/images/NeoRelicIntact.png?ee7d7",
+        "type": "neo"
+      },
+      {
+        "gid": "neo_o1",
+        "name": "Neo O1",
+        "imageUrl": "https://wiki.warframe.com/images/NeoRelicIntact.png?ee7d7",
+        "type": "neo"
+      },
+      {
+        "gid": "neo_p1",
+        "name": "Neo P1",
+        "imageUrl": "https://wiki.warframe.com/images/NeoRelicIntact.png?ee7d7",
+        "type": "neo"
+      },
+      {
+        "gid": "neo_q1",
+        "name": "Neo Q1",
+        "imageUrl": "https://wiki.warframe.com/images/NeoRelicIntact.png?ee7d7",
+        "type": "neo"
+      },
+      {
+        "gid": "neo_r1",
+        "name": "Neo R1",
+        "imageUrl": "https://wiki.warframe.com/images/NeoRelicIntact.png?ee7d7",
+        "type": "neo"
+      },
+      {
+        "gid": "neo_s1",
+        "name": "Neo S1",
+        "imageUrl": "https://wiki.warframe.com/images/NeoRelicIntact.png?ee7d7",
+        "type": "neo"
+      },
+      {
+        "gid": "neo_s2",
+        "name": "Neo S2",
+        "imageUrl": "https://wiki.warframe.com/images/NeoRelicIntact.png?ee7d7",
+        "type": "neo"
+      },
+      {
+        "gid": "neo_t1",
+        "name": "Neo T1",
+        "imageUrl": "https://wiki.warframe.com/images/NeoRelicIntact.png?ee7d7",
+        "type": "neo"
+      },
+      {
+        "gid": "neo_u1",
+        "name": "Neo U1",
+        "imageUrl": "https://wiki.warframe.com/images/NeoRelicIntact.png?ee7d7",
+        "type": "neo"
+      },
+      {
+        "gid": "neo_v1",
+        "name": "Neo V1",
+        "imageUrl": "https://wiki.warframe.com/images/NeoRelicIntact.png?ee7d7",
+        "type": "neo"
+      },
+      {
+        "gid": "neo_w1",
+        "name": "Neo W1",
+        "imageUrl": "https://wiki.warframe.com/images/NeoRelicIntact.png?ee7d7",
+        "type": "neo"
+      },
+      {
+        "gid": "neo_x1",
+        "name": "Neo X1",
+        "imageUrl": "https://wiki.warframe.com/images/NeoRelicIntact.png?ee7d7",
+        "type": "neo"
+      },
+      {
+        "gid": "neo_y1",
+        "name": "Neo Y1",
+        "imageUrl": "https://wiki.warframe.com/images/NeoRelicIntact.png?ee7d7",
+        "type": "neo"
+      },
+      {
+        "gid": "neo_z1",
+        "name": "Neo Z1",
+        "imageUrl": "https://wiki.warframe.com/images/NeoRelicIntact.png?ee7d7",
+        "type": "neo"
+      },
+      {
+        "gid": "neo_z2",
+        "name": "Neo Z2",
+        "imageUrl": "https://wiki.warframe.com/images/NeoRelicIntact.png?ee7d7",
+        "type": "neo"
+      },
+      {
+        "gid": "neo_z3",
+        "name": "Neo Z3",
+        "imageUrl": "https://wiki.warframe.com/images/NeoRelicIntact.png?ee7d7",
+        "type": "neo"
+      },
+      {
+        "gid": "neo_z4",
+        "name": "Neo Z4",
+        "imageUrl": "https://wiki.warframe.com/images/NeoRelicIntact.png?ee7d7",
+        "type": "neo"
+      },
+      {
+        "gid": "neo_z5",
+        "name": "Neo Z5",
+        "imageUrl": "https://wiki.warframe.com/images/NeoRelicIntact.png?ee7d7",
+        "type": "neo"
+      },
+      {
+        "gid": "neo_z6",
+        "name": "Neo Z6",
+        "imageUrl": "https://wiki.warframe.com/images/NeoRelicIntact.png?ee7d7",
+        "type": "neo"
+      },
+      {
+        "gid": "neo_z7",
+        "name": "Neo Z7",
+        "imageUrl": "https://wiki.warframe.com/images/NeoRelicIntact.png?ee7d7",
+        "type": "neo"
+      },
+      {
+        "gid": "axi_a1",
+        "name": "Axi A1",
+        "imageUrl": "https://wiki.warframe.com/images/AxiRelicIntact.png?ee7d7",
+        "type": "axi"
+      },
+      {
+        "gid": "axi_a2",
+        "name": "Axi A2",
+        "imageUrl": "https://wiki.warframe.com/images/AxiRelicIntact.png?ee7d7",
+        "type": "axi"
+      },
+      {
+        "gid": "axi_a3",
+        "name": "Axi A3",
+        "imageUrl": "https://wiki.warframe.com/images/AxiRelicIntact.png?ee7d7",
+        "type": "axi"
+      },
+      {
+        "gid": "axi_a4",
+        "name": "Axi A4",
+        "imageUrl": "https://wiki.warframe.com/images/AxiRelicIntact.png?ee7d7",
+        "type": "axi"
+      },
+      {
+        "gid": "axi_a5",
+        "name": "Axi A5",
+        "imageUrl": "https://wiki.warframe.com/images/AxiRelicIntact.png?ee7d7",
+        "type": "axi"
+      },
+      {
+        "gid": "axi_a6",
+        "name": "Axi A6",
+        "imageUrl": "https://wiki.warframe.com/images/AxiRelicIntact.png?ee7d7",
+        "type": "axi"
+      },
+      {
+        "gid": "axi_a7",
+        "name": "Axi A7",
+        "imageUrl": "https://wiki.warframe.com/images/AxiRelicIntact.png?ee7d7",
+        "type": "axi"
+      },
+      {
+        "gid": "axi_a8",
+        "name": "Axi A8",
+        "imageUrl": "https://wiki.warframe.com/images/AxiRelicIntact.png?ee7d7",
+        "type": "axi"
+      },
+      {
+        "gid": "axi_b1",
+        "name": "Axi B1",
+        "imageUrl": "https://wiki.warframe.com/images/AxiRelicIntact.png?ee7d7",
+        "type": "axi"
+      },
+      {
+        "gid": "axi_b2",
+        "name": "Axi B2",
+        "imageUrl": "https://wiki.warframe.com/images/AxiRelicIntact.png?ee7d7",
+        "type": "axi"
+      },
+      {
+        "gid": "axi_b3",
+        "name": "Axi B3",
+        "imageUrl": "https://wiki.warframe.com/images/AxiRelicIntact.png?ee7d7",
+        "type": "axi"
+      },
+      {
+        "gid": "axi_b4",
+        "name": "Axi B4",
+        "imageUrl": "https://wiki.warframe.com/images/AxiRelicIntact.png?ee7d7",
+        "type": "axi"
+      },
+      {
+        "gid": "axi_c1",
+        "name": "Axi C1",
+        "imageUrl": "https://wiki.warframe.com/images/AxiRelicIntact.png?ee7d7",
+        "type": "axi"
+      },
+      {
+        "gid": "axi_c2",
+        "name": "Axi C2",
+        "imageUrl": "https://wiki.warframe.com/images/AxiRelicIntact.png?ee7d7",
+        "type": "axi"
+      },
+      {
+        "gid": "axi_c3",
+        "name": "Axi C3",
+        "imageUrl": "https://wiki.warframe.com/images/AxiRelicIntact.png?ee7d7",
+        "type": "axi"
+      },
+      {
+        "gid": "axi_d1",
+        "name": "Axi D1",
+        "imageUrl": "https://wiki.warframe.com/images/AxiRelicIntact.png?ee7d7",
+        "type": "axi"
+      },
+      {
+        "gid": "axi_d2",
+        "name": "Axi D2",
+        "imageUrl": "https://wiki.warframe.com/images/AxiRelicIntact.png?ee7d7",
+        "type": "axi"
+      },
+      {
+        "gid": "axi_e1",
+        "name": "Axi E1",
+        "imageUrl": "https://wiki.warframe.com/images/AxiRelicIntact.png?ee7d7",
+        "type": "axi"
+      },
+      {
+        "gid": "axi_e2",
+        "name": "Axi E2",
+        "imageUrl": "https://wiki.warframe.com/images/AxiRelicIntact.png?ee7d7",
+        "type": "axi"
+      },
+      {
+        "gid": "axi_f1",
+        "name": "Axi F1",
+        "imageUrl": "https://wiki.warframe.com/images/AxiRelicIntact.png?ee7d7",
+        "type": "axi"
+      },
+      {
+        "gid": "axi_f2",
+        "name": "Axi F2",
+        "imageUrl": "https://wiki.warframe.com/images/AxiRelicIntact.png?ee7d7",
+        "type": "axi"
+      },
+      {
+        "gid": "axi_g1",
+        "name": "Axi G1",
+        "imageUrl": "https://wiki.warframe.com/images/AxiRelicIntact.png?ee7d7",
+        "type": "axi"
+      },
+      {
+        "gid": "axi_h1",
+        "name": "Axi H1",
+        "imageUrl": "https://wiki.warframe.com/images/AxiRelicIntact.png?ee7d7",
+        "type": "axi"
+      },
+      {
+        "gid": "axi_h2",
+        "name": "Axi H2",
+        "imageUrl": "https://wiki.warframe.com/images/AxiRelicIntact.png?ee7d7",
+        "type": "axi"
+      },
+      {
+        "gid": "axi_i1",
+        "name": "Axi I1",
+        "imageUrl": "https://wiki.warframe.com/images/AxiRelicIntact.png?ee7d7",
+        "type": "axi"
+      },
+      {
+        "gid": "axi_j1",
+        "name": "Axi J1",
+        "imageUrl": "https://wiki.warframe.com/images/AxiRelicIntact.png?ee7d7",
+        "type": "axi"
+      },
+      {
+        "gid": "axi_k1",
+        "name": "Axi K1",
+        "imageUrl": "https://wiki.warframe.com/images/AxiRelicIntact.png?ee7d7",
+        "type": "axi"
+      },
+      {
+        "gid": "axi_l1",
+        "name": "Axi L1",
+        "imageUrl": "https://wiki.warframe.com/images/AxiRelicIntact.png?ee7d7",
+        "type": "axi"
+      },
+      {
+        "gid": "axi_m1",
+        "name": "Axi M1",
+        "imageUrl": "https://wiki.warframe.com/images/AxiRelicIntact.png?ee7d7",
+        "type": "axi"
+      },
+      {
+        "gid": "axi_n1",
+        "name": "Axi N1",
+        "imageUrl": "https://wiki.warframe.com/images/AxiRelicIntact.png?ee7d7",
+        "type": "axi"
+      },
+      {
+        "gid": "axi_o1",
+        "name": "Axi O1",
+        "imageUrl": "https://wiki.warframe.com/images/AxiRelicIntact.png?ee7d7",
+        "type": "axi"
+      },
+      {
+        "gid": "axi_p1",
+        "name": "Axi P1",
+        "imageUrl": "https://wiki.warframe.com/images/AxiRelicIntact.png?ee7d7",
+        "type": "axi"
+      },
+      {
+        "gid": "axi_q1",
+        "name": "Axi Q1",
+        "imageUrl": "https://wiki.warframe.com/images/AxiRelicIntact.png?ee7d7",
+        "type": "axi"
+      },
+      {
+        "gid": "axi_r1",
+        "name": "Axi R1",
+        "imageUrl": "https://wiki.warframe.com/images/AxiRelicIntact.png?ee7d7",
+        "type": "axi"
+      },
+      {
+        "gid": "axi_s1",
+        "name": "Axi S1",
+        "imageUrl": "https://wiki.warframe.com/images/AxiRelicIntact.png?ee7d7",
+        "type": "axi"
+      },
+      {
+        "gid": "axi_t1",
+        "name": "Axi T1",
+        "imageUrl": "https://wiki.warframe.com/images/AxiRelicIntact.png?ee7d7",
+        "type": "axi"
+      },
+      {
+        "gid": "axi_u1",
+        "name": "Axi U1",
+        "imageUrl": "https://wiki.warframe.com/images/AxiRelicIntact.png?ee7d7",
+        "type": "axi"
+      },
+      {
+        "gid": "axi_v1",
+        "name": "Axi V1",
+        "imageUrl": "https://wiki.warframe.com/images/AxiRelicIntact.png?ee7d7",
+        "type": "axi"
+      },
+      {
+        "gid": "axi_w1",
+        "name": "Axi W1",
+        "imageUrl": "https://wiki.warframe.com/images/AxiRelicIntact.png?ee7d7",
+        "type": "axi"
+      },
+      {
+        "gid": "axi_x1",
+        "name": "Axi X1",
+        "imageUrl": "https://wiki.warframe.com/images/AxiRelicIntact.png?ee7d7",
+        "type": "axi"
+      },
+      {
+        "gid": "axi_y1",
+        "name": "Axi Y1",
+        "imageUrl": "https://wiki.warframe.com/images/AxiRelicIntact.png?ee7d7",
+        "type": "axi"
+      },
+      {
+        "gid": "axi_z1",
+        "name": "Axi Z1",
+        "imageUrl": "https://wiki.warframe.com/images/AxiRelicIntact.png?ee7d7",
+        "type": "axi"
+      },
+      {
+        "gid": "axi_z2",
+        "name": "Axi Z2",
+        "imageUrl": "https://wiki.warframe.com/images/AxiRelicIntact.png?ee7d7",
+        "type": "axi"
+      },
+      {
+        "gid": "axi_z3",
+        "name": "Axi Z3",
+        "imageUrl": "https://wiki.warframe.com/images/AxiRelicIntact.png?ee7d7",
+        "type": "axi"
+      },
+      {
+        "gid": "axi_z4",
+        "name": "Axi Z4",
+        "imageUrl": "https://wiki.warframe.com/images/AxiRelicIntact.png?ee7d7",
+        "type": "axi"
+      },
+      {
+        "gid": "axi_z5",
+        "name": "Axi Z5",
+        "imageUrl": "https://wiki.warframe.com/images/AxiRelicIntact.png?ee7d7",
+        "type": "axi"
+      },
+      {
+        "gid": "axi_z6",
+        "name": "Axi Z6",
+        "imageUrl": "https://wiki.warframe.com/images/AxiRelicIntact.png?ee7d7",
+        "type": "axi"
+      },
+      {
+        "gid": "requiem_1",
+        "name": "Requiem I",
+        "imageUrl": "https://wiki.warframe.com/images/RequiemRelic.png?ee7d7",
+        "type": "requiem"
+      },
+      {
+        "gid": "requiem_2",
+        "name": "Requiem II",
+        "imageUrl": "https://wiki.warframe.com/images/RequiemRelic.png?ee7d7",
+        "type": "requiem"
+      },
+      {
+        "gid": "requiem_3",
+        "name": "Requiem III",
+        "imageUrl": "https://wiki.warframe.com/images/RequiemRelic.png?ee7d7",
+        "type": "requiem"
+      },
+      {
+        "gid": "requiem_4",
+        "name": "Requiem IV",
+        "imageUrl": "https://wiki.warframe.com/images/RequiemRelic.png?ee7d7",
+        "type": "requiem"
+      }
+    ],
+    "indexes": [],
+    "system": false
+  }

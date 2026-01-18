@@ -1,0 +1,1016 @@
+import 'package:warframetools/models/relic_item.dart';
+
+final List<RelicItem> neoRelics = [  RelicItem(
+    id: 'neo_a1',
+    name: 'Neo A1',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_a2',
+    name: 'Neo A2',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_a3',
+    name: 'Neo A3',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_a4',
+    name: 'Neo A4',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_a5',
+    name: 'Neo A5',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_a6',
+    name: 'Neo A6',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_a7',
+    name: 'Neo A7',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_a8',
+    name: 'Neo A8',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_a9',
+    name: 'Neo A9',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_a10',
+    name: 'Neo A10',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_a11',
+    name: 'Neo A11',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_a12',
+    name: 'Neo A12',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_a13',
+    name: 'Neo A13',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_a14',
+    name: 'Neo A14',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_b1',
+    name: 'Neo B1',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_b2',
+    name: 'Neo B2',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_b3',
+    name: 'Neo B3',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_b4',
+    name: 'Neo B4',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_b5',
+    name: 'Neo B5',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_b6',
+    name: 'Neo B6',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_b7',
+    name: 'Neo B7',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_b8',
+    name: 'Neo B8',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_b9',
+    name: 'Neo B9',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_c1',
+    name: 'Neo C1',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_c2',
+    name: 'Neo C2',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_c3',
+    name: 'Neo C3',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_c4',
+    name: 'Neo C4',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_c5',
+    name: 'Neo C5',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_c6',
+    name: 'Neo C6',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_d1',
+    name: 'Neo D1',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_d2',
+    name: 'Neo D2',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_d3',
+    name: 'Neo D3',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_d4',
+    name: 'Neo D4',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_d5',
+    name: 'Neo D5',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_d6',
+    name: 'Neo D6',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_d7',
+    name: 'Neo D7',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_d8',
+    name: 'Neo D8',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_d9',
+    name: 'Neo D9',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_d10',
+    name: 'Neo D10',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_e1',
+    name: 'Neo E1',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_e2',
+    name: 'Neo E2',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_e3',
+    name: 'Neo E3',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_e4',
+    name: 'Neo E4',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_f1',
+    name: 'Neo F1',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_f2',
+    name: 'Neo F2',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_f3',
+    name: 'Neo F3',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_g1',
+    name: 'Neo G1',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_g2',
+    name: 'Neo G2',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_g3',
+    name: 'Neo G3',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_g4',
+    name: 'Neo G4',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_g5',
+    name: 'Neo G5',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_g6',
+    name: 'Neo G6',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_g7',
+    name: 'Neo G7',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_g8',
+    name: 'Neo G8',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_g9',
+    name: 'Neo G9',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_h1',
+    name: 'Neo H1',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_h2',
+    name: 'Neo H2',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_h3',
+    name: 'Neo H3',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_i1',
+    name: 'Neo I1',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_i2',
+    name: 'Neo I2',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_i3',
+    name: 'Neo I3',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_k1',
+    name: 'Neo K1',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_k2',
+    name: 'Neo K2',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_k3',
+    name: 'Neo K3',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_k4',
+    name: 'Neo K4',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_k5',
+    name: 'Neo K5',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_k6',
+    name: 'Neo K6',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_k7',
+    name: 'Neo K7',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_k8',
+    name: 'Neo K8',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_l1',
+    name: 'Neo L1',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_l2',
+    name: 'Neo L2',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_l3',
+    name: 'Neo L3',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_l4',
+    name: 'Neo L4',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_m1',
+    name: 'Neo M1',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_m2',
+    name: 'Neo M2',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_m3',
+    name: 'Neo M3',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_m4',
+    name: 'Neo M4',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_m5',
+    name: 'Neo M5',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_n1',
+    name: 'Neo N1',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_n2',
+    name: 'Neo N2',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_n3',
+    name: 'Neo N3',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_n4',
+    name: 'Neo N4',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_n5',
+    name: 'Neo N5',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_n6',
+    name: 'Neo N6',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_n7',
+    name: 'Neo N7',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_n8',
+    name: 'Neo N8',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_n9',
+    name: 'Neo N9',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_n10',
+    name: 'Neo N10',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_n11',
+    name: 'Neo N11',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_n12',
+    name: 'Neo N12',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_n13',
+    name: 'Neo N13',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_n14',
+    name: 'Neo N14',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_n15',
+    name: 'Neo N15',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_n16',
+    name: 'Neo N16',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_n17',
+    name: 'Neo N17',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_n18',
+    name: 'Neo N18',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_n19',
+    name: 'Neo N19',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_n20',
+    name: 'Neo N20',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_n21',
+    name: 'Neo N21',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_n22',
+    name: 'Neo N22',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_n23',
+    name: 'Neo N23',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_o1',
+    name: 'Neo O1',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_o2',
+    name: 'Neo O2',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_p1',
+    name: 'Neo P1',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_p2',
+    name: 'Neo P2',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_p3',
+    name: 'Neo P3',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_p4',
+    name: 'Neo P4',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_p5',
+    name: 'Neo P5',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_p6',
+    name: 'Neo P6',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_p7',
+    name: 'Neo P7',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_p8',
+    name: 'Neo P8',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_q1',
+    name: 'Neo Q1',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_r1',
+    name: 'Neo R1',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_r2',
+    name: 'Neo R2',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_r3',
+    name: 'Neo R3',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_r4',
+    name: 'Neo R4',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_r5',
+    name: 'Neo R5',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_s1',
+    name: 'Neo S1',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_s2',
+    name: 'Neo S2',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_s3',
+    name: 'Neo S3',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_s4',
+    name: 'Neo S4',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_s5',
+    name: 'Neo S5',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_s6',
+    name: 'Neo S6',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_s7',
+    name: 'Neo S7',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_s8',
+    name: 'Neo S8',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_s9',
+    name: 'Neo S9',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_s10',
+    name: 'Neo S10',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_s11',
+    name: 'Neo S11',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_s12',
+    name: 'Neo S12',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_s13',
+    name: 'Neo S13',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_s14',
+    name: 'Neo S14',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_s15',
+    name: 'Neo S15',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_s16',
+    name: 'Neo S16',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_s17',
+    name: 'Neo S17',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_s18',
+    name: 'Neo S18',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_s19',
+    name: 'Neo S19',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_t1',
+    name: 'Neo T1',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_t2',
+    name: 'Neo T2',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_t3',
+    name: 'Neo T3',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_t4',
+    name: 'Neo T4',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_t5',
+    name: 'Neo T5',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_t6',
+    name: 'Neo T6',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_t7',
+    name: 'Neo T7',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_t8',
+    name: 'Neo T8',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_t9',
+    name: 'Neo T9',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_v1',
+    name: 'Neo V1',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_v2',
+    name: 'Neo V2',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_v3',
+    name: 'Neo V3',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_v4',
+    name: 'Neo V4',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_v5',
+    name: 'Neo V5',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_v6',
+    name: 'Neo V6',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_v7',
+    name: 'Neo V7',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_v8',
+    name: 'Neo V8',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_v9',
+    name: 'Neo V9',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_v10',
+    name: 'Neo V10',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_w1',
+    name: 'Neo W1',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_w2',
+    name: 'Neo W2',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_x1',
+    name: 'Neo X1',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_z1',
+    name: 'Neo Z1',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_z2',
+    name: 'Neo Z2',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_z3',
+    name: 'Neo Z3',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_z4',
+    name: 'Neo Z4',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_z5',
+    name: 'Neo Z5',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_z6',
+    name: 'Neo Z6',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_z7',
+    name: 'Neo Z7',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_z8',
+    name: 'Neo Z8',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_z9',
+    name: 'Neo Z9',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_z10',
+    name: 'Neo Z10',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),
+  RelicItem(
+    id: 'neo_z11',
+    name: 'Neo Z11',
+    imageUrl: 'https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86',
+    counter: 0, condition: 'intact',type:'neo'
+  ),];
