@@ -4,7 +4,7 @@ A modern Flutter application for managing your Warframe void relic inventory. Tr
 
 **Offline-First Architecture**: All 690 relics are bundled in the app. Works without an internet connection!
 
-![WarframeTools](https://via.placeholder.com/800x400?text=WarframeTools+Void+Relic+Manager)
+![WarframeTools](https://play.google.com/store/apps/details?id=com.omniversify.warframe.warframe_tools&hl=en)
 
 ## Features
 
