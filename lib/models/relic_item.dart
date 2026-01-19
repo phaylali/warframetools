@@ -10,19 +10,22 @@ class RelicItem {
   int radiant;
   String condition;
   String type;
+  bool unvaulted;
 
-  RelicItem(
-      {required this.id,
-      required this.name,
-      required this.imageUrl,
-      this.condition = "intact",
-      this.localImagePath,
-      this.counter = 0,
-      this.intact = 0,
-      this.exceptional = 0,
-      this.flawless = 0,
-      this.radiant = 0,
-      this.type = ""});
+  RelicItem({
+    required this.id,
+    required this.name,
+    required this.imageUrl,
+    this.condition = "intact",
+    this.localImagePath,
+    this.counter = 0,
+    this.intact = 0,
+    this.exceptional = 0,
+    this.flawless = 0,
+    this.radiant = 0,
+    this.type = "",
+    this.unvaulted = false,
+  });
 
   factory RelicItem.fromJson(Map<String, dynamic> json) {
     return RelicItem(
@@ -37,6 +40,7 @@ class RelicItem {
       radiant: (json['radiant'] as num?)?.toInt() ?? 0,
       condition: json['condition'] as String,
       type: json['type'] as String,
+      unvaulted: (json['unvaulted'] as bool?) ?? false,
     );
   }
 
@@ -52,6 +56,7 @@ class RelicItem {
         'radiant': radiant,
         'condition': condition,
         'type': type,
+        'unvaulted': unvaulted,
       };
 
   RelicItem copyWith({
@@ -66,6 +71,7 @@ class RelicItem {
     int? radiant,
     String? condition,
     String? type,
+    bool? unvaulted,
   }) {
     return RelicItem(
       id: id ?? this.id,
@@ -79,6 +85,7 @@ class RelicItem {
       radiant: radiant ?? this.radiant,
       condition: condition ?? this.condition,
       type: type ?? this.type,
+      unvaulted: unvaulted ?? this.unvaulted,
     );
   }
 

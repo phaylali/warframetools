@@ -21,7 +21,7 @@ A modern Flutter application for managing your Warframe void relic inventory. Tr
 
 ### Offline-First Design
 - **All data bundled** - 690 relics included in APK
-- **Local storage** - sqflite database for counters
+- **Local storage** - sqlite3 database for counters
 - **No network required** - App works completely offline
 - **Cloud sync optional** - Push/pull to PocketBase when available
 
@@ -165,7 +165,7 @@ lib/
 │   ├── theme/                   # Theme definitions
 │   ├── utils/                   # Storage service
 │   └── services/
-│       ├── local_db_service.dart   # sqflite operations
+│       ├── local_db_service.dart   # sqlite3 operations
 │       └── pocketbase_service.dart # Cloud sync (optional)
 assets/
 ├── images/                      # App images
@@ -181,7 +181,7 @@ assets/
 | State Management | Riverpod 2.6.1 |
 | Routing | GoRouter 14.x |
 | Backend | PocketBase 0.23.2 (optional) |
-| Local Storage | sqflite 2.3.0 + SharedPreferences |
+| Local Storage | sqlite3 1.5.1 + SharedPreferences |
 | Network Images | Cached Network Image |
 
 ## Contributing

@@ -109,18 +109,21 @@ class RelicItemCard extends StatelessWidget {
     );
   }
 
-  Widget _buildCircle(bool isCyan, BuildContext context) {
-    return Container(
-      width: 20,
-      height: 20,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: isCyan ? Colors.cyan : Theme.of(context).colorScheme.surface,
-        border: Border.all(
-          color: isCyan
-              ? Colors.cyan.shade700
-              : Theme.of(context).colorScheme.outline,
-          width: 1,
+  Widget _buildCircle(bool isCyan, BuildContext context, VoidCallback onTap) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        width: 20,
+        height: 20,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: isCyan ? Colors.cyan : Theme.of(context).colorScheme.surface,
+          border: Border.all(
+            color: isCyan
+                ? Colors.cyan.shade700
+                : Theme.of(context).colorScheme.outline,
+            width: 1,
+          ),
         ),
       ),
     );
@@ -129,7 +132,7 @@ class RelicItemCard extends StatelessWidget {
   Widget _buildConditionColumn({
     required BuildContext context,
     required int count,
-    required VoidCallback onTap,
+    required VoidCallback onIncrement,
     required VoidCallback onDecrement,
     required Widget? indicator,
   }) {
@@ -138,26 +141,23 @@ class RelicItemCard extends StatelessWidget {
       children: [
         indicator ?? const SizedBox(height: 20),
         const SizedBox(height: 8),
-        GestureDetector(
-          onTap: onTap,
-          child: Container(
-            width: 36,
-            height: 26,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.primaryContainer,
-              borderRadius: BorderRadius.circular(6),
-            ),
-            
-            child: Padding(
-              padding: const EdgeInsets.only(top: 4),
-              child: Text(
-                '$count',
-                style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                      fontWeight: FontWeight.bold,textBaseline: TextBaseline.ideographic,
-                      color: Theme.of(context).colorScheme.onPrimaryContainer,
-                    ),
-              ),
+        Container(
+          width: 36,
+          height: 26,
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.primaryContainer,
+            borderRadius: BorderRadius.circular(6),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.only(top: 4),
+            child: Text(
+              '$count',
+              style: Theme.of(context).textTheme.titleSmall?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    textBaseline: TextBaseline.ideographic,
+                    color: Theme.of(context).colorScheme.onPrimaryContainer,
+                  ),
             ),
           ),
         ),
@@ -217,9 +217,24 @@ class RelicItemCard extends StatelessWidget {
             ),
             const SizedBox(width: 12),
             Expanded(
-              child: Text(
-                item.name,
-                style: Theme.of(context).textTheme.titleMedium,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    item.name,
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
+                  Text(
+                    item.unvaulted ? 'unvaulted' : 'vaulted',
+                    style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                          color: item.unvaulted
+                              ? Colors.green
+                              : Colors.red.shade400,
+                          fontWeight: FontWeight.w500,
+                        ),
+                  ),
+                ],
               ),
             ),
             Row(
@@ -228,33 +243,34 @@ class RelicItemCard extends StatelessWidget {
                 _buildConditionColumn(
                   context: context,
                   count: item.intact,
-                  onTap: onIncrementIntact,
+                  onIncrement: onIncrementIntact,
                   onDecrement: onDecrementIntact,
-                  indicator: _buildCircle(false, context),
+                  indicator: _buildCircle(false, context, onIncrementIntact),
                 ),
                 const SizedBox(width: 8),
                 _buildConditionColumn(
                   context: context,
                   count: item.exceptional,
-                  onTap: onIncrementExceptional,
+                  onIncrement: onIncrementExceptional,
                   onDecrement: onDecrementExceptional,
-                  indicator: _buildCircle(true, context),
+                  indicator:
+                      _buildCircle(true, context, onIncrementExceptional),
                 ),
                 const SizedBox(width: 8),
                 _buildConditionColumn(
                   context: context,
                   count: item.flawless,
-                  onTap: onIncrementFlawless,
+                  onIncrement: onIncrementFlawless,
                   onDecrement: onDecrementFlawless,
-                  indicator: _buildCircle(true, context),
+                  indicator: _buildCircle(true, context, onIncrementFlawless),
                 ),
                 const SizedBox(width: 8),
                 _buildConditionColumn(
                   context: context,
                   count: item.radiant,
-                  onTap: onIncrementRadiant,
+                  onIncrement: onIncrementRadiant,
                   onDecrement: onDecrementRadiant,
-                  indicator: _buildCircle(true, context),
+                  indicator: _buildCircle(true, context, onIncrementRadiant),
                 ),
               ],
             ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod/legacy.dart';
 import '../models/relic_item.dart';
 import '../providers/relic_provider.dart';
 import '../widgets/common/app_drawer.dart';

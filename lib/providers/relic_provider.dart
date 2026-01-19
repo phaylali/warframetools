@@ -1,4 +1,5 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod/riverpod.dart';
+import 'package:riverpod/legacy.dart';
 import '../models/relic_item.dart';
 import '../core/services/local_db_service.dart';
 import '../core/services/pocketbase_service.dart';
@@ -137,7 +138,7 @@ class RelicNotifier extends StateNotifier<List<RelicItem>> {
       }
       return item;
     }).toList();
-    _saveData();
+    _saveSingleRelic(state.firstWhere((i) => i.id == relicGid));
     _syncSingleToCloud(relicGid);
   }
 
@@ -181,7 +182,7 @@ class RelicNotifier extends StateNotifier<List<RelicItem>> {
       }
       return item;
     }).toList();
-    _saveData();
+    _saveSingleRelic(state.firstWhere((i) => i.id == relicGid));
     _syncSingleToCloud(relicGid);
   }
 
@@ -205,7 +206,7 @@ class RelicNotifier extends StateNotifier<List<RelicItem>> {
       }
       return item;
     }).toList();
-    _saveData();
+    _saveSingleRelic(state.firstWhere((i) => i.id == relicGid));
     _syncSingleToCloud(relicGid);
   }
 
@@ -222,7 +223,7 @@ class RelicNotifier extends StateNotifier<List<RelicItem>> {
       }
       return item;
     }).toList();
-    _saveData();
+    _saveSingleRelic(state.firstWhere((i) => i.id == relicGid));
     _syncSingleToCloud(relicGid);
   }
 
@@ -236,10 +237,20 @@ class RelicNotifier extends StateNotifier<List<RelicItem>> {
               counter: 0,
             ))
         .toList();
-    _saveData();
+    _saveAllData();
   }
 
-  Future<void> _saveData() async {
+  Future<void> _saveSingleRelic(RelicItem item) async {
+    await LocalDatabaseService.upsertRelicCounters(
+      relicGid: item.id,
+      intact: item.intact,
+      exceptional: item.exceptional,
+      flawless: item.flawless,
+      radiant: item.radiant,
+    );
+  }
+
+  Future<void> _saveAllData() async {
     for (final item in state) {
       await LocalDatabaseService.upsertRelicCounters(
         relicGid: item.id,

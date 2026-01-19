@@ -13,7 +13,7 @@
 migrate_working_dir/
 
 # Development documentation
-DEVELOPMENT_NOTES.md
+development_notes/DEVELOPMENT_NOTES.md
 *.md.bak
 
 # Development/Debug scripts

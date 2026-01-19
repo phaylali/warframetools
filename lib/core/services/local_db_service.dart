@@ -1,150 +1,78 @@
 import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/services.dart';
-import 'package:path/path.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:sqflite/sqflite.dart';
+import 'package:drift/drift.dart';
+import 'package:warframetools/core/database/database.dart';
+
+final AppDatabase database = AppDatabase();
 
 class LocalDatabaseService {
-  static Database? _database;
-  static const String _dbName = 'warframetools.db';
-
-  static Future<Database> get database async {
-    if (_database != null) return _database!;
-    _database = await _initDatabase();
-    return _database!;
-  }
-
-  static Future<Database> _initDatabase() async {
-    final directory = await getApplicationDocumentsDirectory();
-    final path = join(directory.path, _dbName);
-
-    return openDatabase(
-      path,
-      version: 1,
-      onCreate: _onCreate,
-      onUpgrade: _onUpgrade,
-    );
-  }
-
-  static Future<void> _onCreate(Database db, int version) async {
-    await db.execute('''
-      CREATE TABLE IF NOT EXISTS relic_info (
-        id TEXT PRIMARY KEY,
-        gid TEXT NOT NULL,
-        name TEXT NOT NULL,
-        imageUrl TEXT,
-        type TEXT NOT NULL,
-        updatedAt TEXT DEFAULT CURRENT_TIMESTAMP
-      )
-    ''');
-
-    await db.execute('''
-      CREATE TABLE IF NOT EXISTS relic_counters (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        relicGid TEXT NOT NULL,
-        intact INTEGER DEFAULT 0,
-        exceptional INTEGER DEFAULT 0,
-        flawless INTEGER DEFAULT 0,
-        radiant INTEGER DEFAULT 0,
-        updatedAt TEXT DEFAULT CURRENT_TIMESTAMP,
-        UNIQUE(relicGid)
-      )
-    ''');
-
-    await db.execute('''
-      CREATE TABLE IF NOT EXISTS sync_metadata (
-        key TEXT PRIMARY KEY,
-        value TEXT,
-        updatedAt TEXT DEFAULT CURRENT_TIMESTAMP
-      )
-    ''');
-
-    await db.execute(
-        'CREATE INDEX IF NOT EXISTS idx_relic_info_type ON relic_info(type)');
-    await db.execute(
-        'CREATE INDEX IF NOT EXISTS idx_relic_counters_gid ON relic_counters(relicGid)');
-  }
-
-  static Future<void> _onUpgrade(
-      Database db, int oldVersion, int newVersion) async {
-    // Future migration logic can go here
-  }
-
   static Future<void> close() async {
-    if (_database != null) {
-      await _database!.close();
-      _database = null;
-    }
+    await database.close();
   }
 
-  // Relic INFO operations
   static Future<void> upsertRelicInfo(Map<String, dynamic> relic) async {
-    final db = await database;
-    await db.insert(
-      'relic_info',
-      {
-        ...relic,
-        'updatedAt': DateTime.now().toIso8601String(),
-      },
-      conflictAlgorithm: ConflictAlgorithm.replace,
-    );
+    await database.into(database.relicInfo).insert(
+          RelicInfoData(
+            id: relic['gid'],
+            gid: relic['gid'],
+            name: relic['name'],
+            imageUrl: relic['imageUrl'] ?? '',
+            type: relic['type'],
+            unvaulted: (relic['unvaulted'] as bool?) ?? false,
+          ),
+          mode: InsertMode.insertOrReplace,
+        );
   }
 
   static Future<void> upsertRelicInfoBatch(
       List<Map<String, dynamic>> relics) async {
-    final db = await database;
-    final batch = db.batch();
-    final now = DateTime.now().toIso8601String();
-
-    for (final relic in relics) {
-      batch.insert(
-        'relic_info',
-        {...relic, 'updatedAt': now},
-        conflictAlgorithm: ConflictAlgorithm.replace,
+    await database.batch((batch) {
+      batch.insertAll(
+        database.relicInfo,
+        relics.map((relic) => RelicInfoData(
+              id: relic['gid'],
+              gid: relic['gid'],
+              name: relic['name'],
+              imageUrl: relic['imageUrl'] ?? '',
+              type: relic['type'],
+              unvaulted: (relic['unvaulted'] as bool?) ?? false,
+            )),
+        mode: InsertMode.insertOrReplace,
       );
-    }
-
-    await batch.commit();
+    });
   }
 
   static Future<List<Map<String, dynamic>>> getAllRelicInfo() async {
-    final db = await database;
-    final maps = await db.query('relic_info', orderBy: 'name ASC');
-    return maps.map((m) => Map<String, dynamic>.from(m)).toList();
+    final query = await (database.select(database.relicInfo)
+          ..orderBy([(t) => OrderingTerm.asc(t.name)]))
+        .get();
+    return query.map((row) => row.toMap()).toList();
   }
 
   static Future<List<Map<String, dynamic>>> getRelicInfoByType(
       String type) async {
-    final db = await database;
-    final maps = await db.query(
-      'relic_info',
-      where: 'type = ?',
-      whereArgs: [type],
-      orderBy: 'name ASC',
-    );
-    return maps.map((m) => Map<String, dynamic>.from(m)).toList();
+    final query = await (database.select(database.relicInfo)
+          ..where((t) => t.type.equals(type))
+          ..orderBy([(t) => OrderingTerm.asc(t.name)]))
+        .get();
+    return query.map((row) => row.toMap()).toList();
   }
 
   static Future<Map<String, dynamic>?> getRelicInfoByGid(String gid) async {
-    final db = await database;
-    final maps = await db.query(
-      'relic_info',
-      where: 'gid = ?',
-      whereArgs: [gid],
-    );
-    return maps.isNotEmpty ? Map<String, dynamic>.from(maps.first) : null;
+    final query = await (database.select(database.relicInfo)
+          ..where((t) => t.gid.equals(gid)))
+        .getSingleOrNull();
+    return query?.toMap();
   }
 
   static Future<int> getRelicInfoCount() async {
-    final db = await database;
-    return Sqflite.firstIntValue(
-            await db.rawQuery('SELECT COUNT(*) FROM relic_info')) ??
-        0;
+    final count =
+        await database.select(database.relicInfo).get().then((r) => r.length);
+    return count;
   }
 
   static Future<void> loadRelicInfoFromAssets() async {
-    final db = await database;
     final count = await getRelicInfoCount();
     if (count > 0) return;
 
@@ -153,38 +81,31 @@ class LocalDatabaseService {
           await rootBundle.loadString('assets/data/relics.json');
       final List<dynamic> jsonList = jsonDecode(jsonString);
 
-      final batch = db.batch();
-      for (final item in jsonList) {
-        final relic = item as Map<String, dynamic>;
-        batch.insert(
-          'relic_info',
-          {
-            'id': relic['gid'],
-            'gid': relic['gid'],
-            'name': relic['name'],
-            'imageUrl': relic['imageUrl'] ?? '',
-            'type': relic['type'],
-            'updatedAt': DateTime.now().toIso8601String(),
-          },
-          conflictAlgorithm: ConflictAlgorithm.replace,
+      await database.batch((batch) {
+        batch.insertAll(
+          database.relicInfo,
+          jsonList.map((item) {
+            final relic = item as Map<String, dynamic>;
+            return RelicInfoData(
+              id: relic['gid'],
+              gid: relic['gid'],
+              name: relic['name'],
+              imageUrl: relic['imageUrl'] ?? '',
+              type: relic['type'],
+              unvaulted: (relic['unvaulted'] as bool?) ?? false,
+            );
+          }),
+          mode: InsertMode.insertOrReplace,
         );
-      }
-
-      await batch.commit();
-    } catch (e) {
-      // Silently fail - app will show empty state
-    }
+      });
+    } catch (e) {}
   }
 
-  // Relic Counter operations
   static Future<Map<String, dynamic>?> getRelicCounters(String relicGid) async {
-    final db = await database;
-    final maps = await db.query(
-      'relic_counters',
-      where: 'relicGid = ?',
-      whereArgs: [relicGid],
-    );
-    return maps.isNotEmpty ? Map<String, dynamic>.from(maps.first) : null;
+    final query = await (database.select(database.relicCounters)
+          ..where((t) => t.relicGid.equals(relicGid)))
+        .getSingleOrNull();
+    return query?.toMap();
   }
 
   static Future<void> upsertRelicCounters({
@@ -194,119 +115,204 @@ class LocalDatabaseService {
     required int flawless,
     required int radiant,
   }) async {
-    final db = await database;
-    await db.insert(
-      'relic_counters',
-      {
-        'relicGid': relicGid,
-        'intact': intact,
-        'exceptional': exceptional,
-        'flawless': flawless,
-        'radiant': radiant,
-        'updatedAt': DateTime.now().toIso8601String(),
-      },
-      conflictAlgorithm: ConflictAlgorithm.replace,
-    );
+    await database.into(database.relicCounters).insert(
+          RelicCountersData(
+            relicGid: relicGid,
+            intact: intact,
+            exceptional: exceptional,
+            flawless: flawless,
+            radiant: radiant,
+          ),
+          mode: InsertMode.insertOrReplace,
+        );
   }
 
   static Future<void> incrementCondition(
       String relicGid, String condition) async {
-    final db = await database;
-    final column = condition.toLowerCase();
-    await db.rawUpdate(
-      '''
-      UPDATE relic_counters
-      SET $column = $column + 1,
-          updatedAt = ?
-      WHERE relicGid = ?
-      ''',
-      [DateTime.now().toIso8601String(), relicGid],
-    );
+    final current = await getRelicCounters(relicGid);
+    switch (condition.toLowerCase()) {
+      case 'intact':
+        final newValue = (current?['intact'] as int? ?? 0) + 1;
+        await (database.update(database.relicCounters)
+              ..where((t) => t.relicGid.equals(relicGid)))
+            .write(RelicCountersCompanion(
+          intact: Value(newValue),
+        ));
+        break;
+      case 'exceptional':
+        final newValue = (current?['exceptional'] as int? ?? 0) + 1;
+        await (database.update(database.relicCounters)
+              ..where((t) => t.relicGid.equals(relicGid)))
+            .write(RelicCountersCompanion(
+          exceptional: Value(newValue),
+        ));
+        break;
+      case 'flawless':
+        final newValue = (current?['flawless'] as int? ?? 0) + 1;
+        await (database.update(database.relicCounters)
+              ..where((t) => t.relicGid.equals(relicGid)))
+            .write(RelicCountersCompanion(
+          flawless: Value(newValue),
+        ));
+        break;
+      case 'radiant':
+        final newValue = (current?['radiant'] as int? ?? 0) + 1;
+        await (database.update(database.relicCounters)
+              ..where((t) => t.relicGid.equals(relicGid)))
+            .write(RelicCountersCompanion(
+          radiant: Value(newValue),
+        ));
+        break;
+    }
   }
 
   static Future<void> decrementCondition(
       String relicGid, String condition) async {
-    final db = await database;
-    final column = condition.toLowerCase();
-    await db.rawUpdate(
-      '''
-      UPDATE relic_counters
-      SET $column = CASE WHEN $column > 0 THEN $column - 1 ELSE 0 END,
-          updatedAt = ?
-      WHERE relicGid = ?
-      ''',
-      [DateTime.now().toIso8601String(), relicGid],
-    );
+    final current = await getRelicCounters(relicGid);
+    switch (condition.toLowerCase()) {
+      case 'intact':
+        final currentValue = current?['intact'] as int? ?? 0;
+        if (currentValue <= 0) return;
+        await (database.update(database.relicCounters)
+              ..where((t) => t.relicGid.equals(relicGid)))
+            .write(RelicCountersCompanion(
+          intact: Value(currentValue - 1),
+        ));
+        break;
+      case 'exceptional':
+        final currentValue = current?['exceptional'] as int? ?? 0;
+        if (currentValue <= 0) return;
+        await (database.update(database.relicCounters)
+              ..where((t) => t.relicGid.equals(relicGid)))
+            .write(RelicCountersCompanion(
+          exceptional: Value(currentValue - 1),
+        ));
+        break;
+      case 'flawless':
+        final currentValue = current?['flawless'] as int? ?? 0;
+        if (currentValue <= 0) return;
+        await (database.update(database.relicCounters)
+              ..where((t) => t.relicGid.equals(relicGid)))
+            .write(RelicCountersCompanion(
+          flawless: Value(currentValue - 1),
+        ));
+        break;
+      case 'radiant':
+        final currentValue = current?['radiant'] as int? ?? 0;
+        if (currentValue <= 0) return;
+        await (database.update(database.relicCounters)
+              ..where((t) => t.relicGid.equals(relicGid)))
+            .write(RelicCountersCompanion(
+          radiant: Value(currentValue - 1),
+        ));
+        break;
+    }
   }
 
   static Future<void> resetCondition(String relicGid, String condition) async {
-    final db = await database;
-    final column = condition.toLowerCase();
-    await db.rawUpdate(
-      '''
-      UPDATE relic_counters
-      SET $column = 0,
-          updatedAt = ?
-      WHERE relicGid = ?
-      ''',
-      [DateTime.now().toIso8601String(), relicGid],
-    );
+    switch (condition.toLowerCase()) {
+      case 'intact':
+        await (database.update(database.relicCounters)
+              ..where((t) => t.relicGid.equals(relicGid)))
+            .write(const RelicCountersCompanion(intact: Value(0)));
+        break;
+      case 'exceptional':
+        await (database.update(database.relicCounters)
+              ..where((t) => t.relicGid.equals(relicGid)))
+            .write(const RelicCountersCompanion(exceptional: Value(0)));
+        break;
+      case 'flawless':
+        await (database.update(database.relicCounters)
+              ..where((t) => t.relicGid.equals(relicGid)))
+            .write(const RelicCountersCompanion(flawless: Value(0)));
+        break;
+      case 'radiant':
+        await (database.update(database.relicCounters)
+              ..where((t) => t.relicGid.equals(relicGid)))
+            .write(const RelicCountersCompanion(radiant: Value(0)));
+        break;
+    }
   }
 
   static Future<void> resetAllCounters(String relicGid) async {
-    final db = await database;
-    await db.rawUpdate(
-      '''
-      UPDATE relic_counters
-      SET intact = 0, exceptional = 0, flawless = 0, radiant = 0,
-          updatedAt = ?
-      WHERE relicGid = ?
-      ''',
-      [DateTime.now().toIso8601String(), relicGid],
-    );
+    await (database.update(database.relicCounters)
+          ..where((t) => t.relicGid.equals(relicGid)))
+        .write(const RelicCountersCompanion(
+      intact: Value(0),
+      exceptional: Value(0),
+      flawless: Value(0),
+      radiant: Value(0),
+    ));
   }
 
   static Future<void> resetAllCountersGlobal() async {
-    final db = await database;
-    await db.execute(
-        'UPDATE relic_counters SET intact = 0, exceptional = 0, flawless = 0, radiant = 0');
+    await (database.update(database.relicCounters))
+        .write(const RelicCountersCompanion(
+      intact: Value(0),
+      exceptional: Value(0),
+      flawless: Value(0),
+      radiant: Value(0),
+    ));
   }
 
   static Future<List<Map<String, dynamic>>> getAllCounters() async {
-    final db = await database;
-    final maps = await db.query('relic_counters');
-    return maps.map((m) => Map<String, dynamic>.from(m)).toList();
+    final query = await database.select(database.relicCounters).get();
+    return query.map((row) => row.toMap()).toList();
   }
 
-  // Sync metadata
   static Future<void> setSyncMetadata(String key, String value) async {
-    final db = await database;
-    await db.insert(
-      'sync_metadata',
-      {
-        'key': key,
-        'value': value,
-        'updatedAt': DateTime.now().toIso8601String(),
-      },
-      conflictAlgorithm: ConflictAlgorithm.replace,
-    );
+    await database.into(database.syncMetadata).insert(
+          SyncMetadataData(key: key, value: value),
+          mode: InsertMode.insertOrReplace,
+        );
   }
 
   static Future<String?> getSyncMetadata(String key) async {
-    final db = await database;
-    final maps = await db.query(
-      'sync_metadata',
-      where: 'key = ?',
-      whereArgs: [key],
-    );
-    return maps.isNotEmpty ? maps.first['value'] as String? : null;
+    final query = await (database.select(database.syncMetadata)
+          ..where((t) => t.key.equals(key)))
+        .getSingleOrNull();
+    return query?.value;
   }
 
-  // Utility
   static Future<void> clearAllData() async {
-    final db = await database;
-    await db.execute('DELETE FROM relic_info');
-    await db.execute('DELETE FROM relic_counters');
-    await db.execute('DELETE FROM sync_metadata');
+    await (database.delete(database.relicInfo)).go();
+    await (database.delete(database.relicCounters)).go();
+    await (database.delete(database.syncMetadata)).go();
+  }
+}
+
+extension on RelicInfoData {
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'gid': gid,
+      'name': name,
+      'imageUrl': imageUrl,
+      'type': type,
+      'updatedAt': updatedAt,
+    };
+  }
+}
+
+extension on RelicCountersData {
+  Map<String, dynamic> toMap() {
+    return {
+      'relicGid': relicGid,
+      'intact': intact,
+      'exceptional': exceptional,
+      'flawless': flawless,
+      'radiant': radiant,
+      'updatedAt': updatedAt,
+    };
+  }
+}
+
+extension on SyncMetadataData {
+  Map<String, dynamic> toMap() {
+    return {
+      'key': key,
+      'value': value,
+      'updatedAt': updatedAt,
+    };
   }
 }

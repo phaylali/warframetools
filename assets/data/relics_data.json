@@ -4138,5 +4138,121 @@
     "name": "Requiem IV",
     "imageUrl": "https://wiki.warframe.com/images/RequiemRelicIntact.png?03821",
     "type": "requiem"
+  },
+    {
+    "gid": "lith_d7",
+    "name": "Lith D7",
+    "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+    "type": "lith"
+  },
+  {
+    "gid": "lith_e2",
+    "name": "Lith E2",
+    "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+    "type": "lith"
+  },
+  {
+    "gid": "lith_g14",
+    "name": "Lith G14",
+    "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+    "type": "lith"
+  },
+  {
+    "gid": "lith_k12",
+    "name": "Lith K12",
+    "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+    "type": "lith"
+  },
+  {
+    "gid": "lith_l7",
+    "name": "Lith L7",
+    "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+    "type": "lith"
+  },
+  {
+    "gid": "lith_n18",
+    "name": "Lith N18",
+    "imageUrl": "https://wiki.warframe.com/images/LithRelicIntact.png?ee7d7",
+    "type": "lith"
+  },
+
+  {
+    "gid": "meso_a9",
+    "name": "Meso A9",
+    "imageUrl": "https://wiki.warframe.com/images/MesoRelicIntact.png?a9b4a",
+    "type": "meso"
+  },
+  {
+    "gid": "meso_p17",
+    "name": "Meso P17",
+    "imageUrl": "https://wiki.warframe.com/images/MesoRelicIntact.png?a9b4a",
+    "type": "meso"
+  },
+  {
+    "gid": "meso_v11",
+    "name": "Meso V11",
+    "imageUrl": "https://wiki.warframe.com/images/MesoRelicIntact.png?a9b4a",
+    "type": "meso"
+  },
+  {
+    "gid": "meso_v12",
+    "name": "Meso V12",
+    "imageUrl": "https://wiki.warframe.com/images/MesoRelicIntact.png?a9b4a",
+    "type": "meso"
+  },
+  {
+    "gid": "meso_v13",
+    "name": "Meso V13",
+    "imageUrl": "https://wiki.warframe.com/images/MesoRelicIntact.png?a9b4a",
+    "type": "meso"
+  },
+  {
+    "gid": "meso_v14",
+    "name": "Meso V14",
+    "imageUrl": "https://wiki.warframe.com/images/MesoRelicIntact.png?a9b4a",
+    "type": "meso"
+  },
+  {
+    "gid": "meso_x1",
+    "name": "Meso X1",
+    "imageUrl": "https://wiki.warframe.com/images/MesoRelicIntact.png?a9b4a",
+    "type": "meso"
+  },
+  {
+    "gid": "meso_y1",
+    "name": "Meso Y1",
+    "imageUrl": "https://wiki.warframe.com/images/MesoRelicIntact.png?a9b4a",
+    "type": "meso"
+  },
+
+  {
+    "gid": "neo_c7",
+    "name": "Neo C7",
+    "imageUrl": "https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86",
+    "type": "neo"
+  },
+  {
+    "gid": "neo_k9",
+    "name": "Neo K9",
+    "imageUrl": "https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86",
+    "type": "neo"
+  },
+  {
+    "gid": "neo_o3",
+    "name": "Neo O3",
+    "imageUrl": "https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86",
+    "type": "neo"
+  },
+  {
+    "gid": "neo_p9",
+    "name": "Neo P9",
+    "imageUrl": "https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86",
+    "type": "neo"
+  },
+  {
+    "gid": "neo_t10",
+    "name": "Neo T10",
+    "imageUrl": "https://wiki.warframe.com/images/NeoRelicIntact.png?6dc86",
+    "type": "neo"
   }
 ]
