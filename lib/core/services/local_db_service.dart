@@ -73,13 +73,12 @@ class LocalDatabaseService {
   }
 
   static Future<void> loadRelicInfoFromAssets() async {
-    final count = await getRelicInfoCount();
-    if (count > 0) return;
-
+    print('loadRelicInfoFromAssets called');
     try {
       final String jsonString =
           await rootBundle.loadString('assets/data/relics.json');
       final List<dynamic> jsonList = jsonDecode(jsonString);
+      print('Loaded ${jsonList.length} relics from assets');
 
       await database.batch((batch) {
         batch.insertAll(
@@ -98,7 +97,10 @@ class LocalDatabaseService {
           mode: InsertMode.insertOrReplace,
         );
       });
-    } catch (e) {}
+      print('Inserted ${jsonList.length} relics to DB');
+    } catch (e) {
+      print('loadRelicInfoFromAssets failed: $e');
+    }
   }
 
   static Future<Map<String, dynamic>?> getRelicCounters(String relicGid) async {
@@ -289,6 +291,7 @@ extension on RelicInfoData {
       'name': name,
       'imageUrl': imageUrl,
       'type': type,
+      'unvaulted': unvaulted,
       'updatedAt': updatedAt,
     };
   }

@@ -1,23 +1,26 @@
 import 'dart:convert';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:pocketbase/pocketbase.dart';
 import '../../models/relic_item.dart';
 import 'local_db_service.dart';
 
 class PocketBaseService {
   static PocketBase? _pb;
-  static const String _defaultUrl = 'http://127.0.0.1:8090';
   static const String _relicsInfoCollection = 'relics_info';
   static const String _countersCollection = 'user_counters';
 
   static PocketBase? get instance => _pb;
 
   static Future<void> initialize({String? url}) async {
-    final pbUrl = url ?? _defaultUrl;
+    final pbUrl =
+        url ?? dotenv.env['POCKETBASE_URL'] ?? 'http://localhost:8090';
     _pb = PocketBase(pbUrl);
 
     try {
       await _pb!.health.check();
+      print('PocketBase connected successfully to $pbUrl');
     } catch (e) {
+      print('PocketBase connection failed: $e');
       _pb = null;
     }
   }
@@ -49,9 +52,15 @@ class PocketBaseService {
 
   // Relic INFO operations
   static Future<List<Map<String, dynamic>>> fetchRelicInfoFromCloud() async {
-    if (_pb == null) throw PocketBaseException('Not connected to server');
+    print('fetchRelicInfoFromCloud called');
+    if (_pb == null) {
+      print('_pb is null, throwing exception');
+      throw PocketBaseException('Not connected to server');
+    }
 
+    print('Fetching from collection: $_relicsInfoCollection');
     final records = await _pb!.collection(_relicsInfoCollection).getFullList();
+    print('Fetched ${records.length} records');
 
     return records.map((record) {
       final data = record.toJson();
@@ -61,13 +70,17 @@ class PocketBaseService {
         'name': data['name'] as String? ?? '',
         'imageUrl': data['imageUrl'] as String? ?? '',
         'type': data['type'] as String? ?? '',
+        'unvaulted': (data['unvaulted'] as bool?) ?? false,
       };
     }).toList();
   }
 
   static Future<void> syncRelicInfoFromCloud() async {
+    print('syncRelicInfoFromCloud called');
     final cloudData = await fetchRelicInfoFromCloud();
+    print('Fetched ${cloudData.length} relics from cloud');
     await LocalDatabaseService.upsertRelicInfoBatch(cloudData);
+    print('Upserted ${cloudData.length} relics to local DB');
   }
 
   // Counter sync operations

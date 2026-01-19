@@ -1,20 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:riverpod/legacy.dart';
+import '../core/constants/app_constants.dart';
 import '../models/relic_item.dart';
 import '../providers/relic_provider.dart';
-import '../widgets/common/app_drawer.dart';
-import '../widgets/common/theme_toggle_button.dart';
 import '../widgets/relic/relic_item_card.dart';
 
 final selectedFilterProvider = StateProvider<String>((ref) => 'All');
 final searchQueryProvider = StateProvider<String>((ref) => '');
 
-class RelicCounterScreen extends ConsumerWidget {
+class RelicCounterScreen extends ConsumerStatefulWidget {
   const RelicCounterScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<RelicCounterScreen> createState() => _RelicCounterScreenState();
+}
+
+class _RelicCounterScreenState extends ConsumerState<RelicCounterScreen> {
+  bool _isRefreshing = false;
+
+  Future<void> _onRefresh() async {
+    if (_isRefreshing) return;
+    setState(() => _isRefreshing = true);
+    try {
+      await ref.read(relicProvider.notifier).refreshFromCloud();
+    } finally {
+      if (mounted) {
+        setState(() => _isRefreshing = false);
+      }
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final relicItems = ref.watch(relicProvider);
     final relicNotifier = ref.read(relicProvider.notifier);
     final selectedFilter = ref.watch(selectedFilterProvider);
@@ -56,27 +75,20 @@ class RelicCounterScreen extends ConsumerWidget {
 
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () => context.go(AppConstants.homeRoute),
+          icon: const Icon(Icons.arrow_back),
+          tooltip: 'Back',
+        ),
         title: const Text('Relic Counter'),
         actions: [
-          IconButton(
-            onPressed: () => _showResetDialog(context, relicNotifier),
-            icon: const Icon(Icons.refresh),
-            tooltip: 'Reset All Counters',
-          ),
           IconButton(
             onPressed: () => _showStatsDialog(context, relicItems),
             icon: const Icon(Icons.analytics),
             tooltip: 'Stats',
           ),
-          IconButton(
-            onPressed: () => _showSyncDialog(context, relicNotifier),
-            icon: const Icon(Icons.cloud_sync),
-            tooltip: 'Sync with Server',
-          ),
-          const ThemeToggleButton(),
         ],
       ),
-      drawer: const AppDrawer(),
       body: Column(
         children: [
           Padding(
@@ -222,32 +234,35 @@ class RelicCounterScreen extends ConsumerWidget {
           Expanded(
             child: relicItems.isEmpty
                 ? const Center(child: CircularProgressIndicator())
-                : ListView.builder(
-                    padding:
-                        const EdgeInsets.only(left: 8, right: 8, bottom: 8),
-                    itemCount: filteredItems.length,
-                    itemBuilder: (context, index) {
-                      final item = filteredItems[index];
-                      return RelicItemCard(
-                        item: item,
-                        onIncrementIntact: () =>
-                            relicNotifier.incrementCondition(item.id, 'intact'),
-                        onDecrementIntact: () =>
-                            relicNotifier.decrementCondition(item.id, 'intact'),
-                        onIncrementExceptional: () => relicNotifier
-                            .incrementCondition(item.id, 'exceptional'),
-                        onDecrementExceptional: () => relicNotifier
-                            .decrementCondition(item.id, 'exceptional'),
-                        onIncrementFlawless: () => relicNotifier
-                            .incrementCondition(item.id, 'flawless'),
-                        onDecrementFlawless: () => relicNotifier
-                            .decrementCondition(item.id, 'flawless'),
-                        onIncrementRadiant: () => relicNotifier
-                            .incrementCondition(item.id, 'radiant'),
-                        onDecrementRadiant: () => relicNotifier
-                            .decrementCondition(item.id, 'radiant'),
-                      );
-                    },
+                : RefreshIndicator(
+                    onRefresh: _onRefresh,
+                    child: ListView.builder(
+                      padding:
+                          const EdgeInsets.only(left: 8, right: 8, bottom: 8),
+                      itemCount: filteredItems.length,
+                      itemBuilder: (context, index) {
+                        final item = filteredItems[index];
+                        return RelicItemCard(
+                          item: item,
+                          onIncrementIntact: () => relicNotifier
+                              .incrementCondition(item.id, 'intact'),
+                          onDecrementIntact: () => relicNotifier
+                              .decrementCondition(item.id, 'intact'),
+                          onIncrementExceptional: () => relicNotifier
+                              .incrementCondition(item.id, 'exceptional'),
+                          onDecrementExceptional: () => relicNotifier
+                              .decrementCondition(item.id, 'exceptional'),
+                          onIncrementFlawless: () => relicNotifier
+                              .incrementCondition(item.id, 'flawless'),
+                          onDecrementFlawless: () => relicNotifier
+                              .decrementCondition(item.id, 'flawless'),
+                          onIncrementRadiant: () => relicNotifier
+                              .incrementCondition(item.id, 'radiant'),
+                          onDecrementRadiant: () => relicNotifier
+                              .decrementCondition(item.id, 'radiant'),
+                        );
+                      },
+                    ),
                   ),
           ),
         ],
@@ -322,34 +337,6 @@ class RelicCounterScreen extends ConsumerWidget {
         .length;
   }
 
-  void _showResetDialog(BuildContext context, RelicNotifier notifier) {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Reset All Counters'),
-        content: const Text(
-          'Are you sure you want to reset all counters to zero?',
-        ),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('Cancel'),
-          ),
-          FilledButton(
-            onPressed: () {
-              notifier.resetAllCounters();
-              Navigator.pop(context);
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('All counters reset')),
-              );
-            },
-            child: const Text('Reset'),
-          ),
-        ],
-      ),
-    );
-  }
-
   void _showStatsDialog(BuildContext context, List<RelicItem> relicItems) {
     final totalItems = relicItems.fold<int>(
       0,
@@ -398,48 +385,6 @@ class RelicCounterScreen extends ConsumerWidget {
           TextButton(
             onPressed: () => Navigator.pop(context),
             child: const Text('Close'),
-          ),
-        ],
-      ),
-    );
-  }
-
-  void _showSyncDialog(BuildContext context, RelicNotifier notifier) {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Sync with Server'),
-        content: const Text(
-          'Choose sync direction:',
-        ),
-        actions: [
-          TextButton(
-            onPressed: () async {
-              Navigator.pop(context);
-              await notifier.syncCountersFromCloud();
-              if (context.mounted) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Synced from server')),
-                );
-              }
-            },
-            child: const Text('Pull from Server'),
-          ),
-          FilledButton(
-            onPressed: () async {
-              Navigator.pop(context);
-              await notifier.syncCountersToCloud();
-              if (context.mounted) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Synced to server')),
-                );
-              }
-            },
-            child: const Text('Push to Server'),
-          ),
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('Cancel'),
           ),
         ],
       ),

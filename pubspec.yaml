@@ -27,6 +27,7 @@ dependencies:
   sqlite3_flutter_libs: 
   drift: 
   drift_flutter: 
+  flutter_dotenv: 
 
 dev_dependencies:
   flutter_test:
@@ -44,3 +45,4 @@ flutter:
     - assets/images/
     - assets/data/
     - assets/icons/
+    - .env

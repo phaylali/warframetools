@@ -15,8 +15,11 @@ migrate_working_dir/
 # Development documentation
 development_notes/DEVELOPMENT_NOTES.md
 *.md.bak
+AGENTS.md
 
-# Development/Debug scripts
+# Environment variables
+.env
+.env.local
 *.dart
 !lib/**/*.dart
 !pubspec.yaml

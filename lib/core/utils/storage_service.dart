@@ -29,4 +29,15 @@ class StorageService {
   static List<RelicItem> getDefaultRelicData() {
     return allRelics;
   }
+
+  // Relic update frequency
+  static const String _relicUpdateFrequencyKey = 'relic_update_frequency';
+
+  static Future<void> setRelicUpdateFrequency(String frequency) async {
+    await _prefs?.setString(_relicUpdateFrequencyKey, frequency);
+  }
+
+  static String getRelicUpdateFrequency() {
+    return _prefs?.getString(_relicUpdateFrequencyKey) ?? 'never';
+  }
 }

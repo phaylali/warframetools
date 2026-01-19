@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../core/constants/app_constants.dart';
-import '../widgets/common/app_drawer.dart';
-import '../widgets/common/theme_toggle_button.dart';
 import '../widgets/relic/inventory_circle_chart.dart';
+import '../widgets/common/app_drawer.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -12,12 +11,14 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.menu),
+          onPressed: () {
+            DrawerOpener.of(context)?.openDrawer();
+          },
+        ),
         title: const Text(AppConstants.appName),
-        actions: const [
-          ThemeToggleButton(),
-        ],
       ),
-      drawer: const AppDrawer(),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(

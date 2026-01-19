@@ -34,21 +34,24 @@ class RelicNotifier extends StateNotifier<List<RelicItem>> {
   }
 
   Future<void> _loadData() async {
-    int localCount = await LocalDatabaseService.getRelicInfoCount();
-
-    if (localCount == 0) {
-      try {
-        await PocketBaseService.syncRelicInfoFromCloud();
-      } catch (e) {
-        await LocalDatabaseService.loadRelicInfoFromAssets();
-      }
+    print('_loadData called');
+    try {
+      await PocketBaseService.syncRelicInfoFromCloud();
+    } catch (e) {
+      print('_loadData: cloud sync failed, loading from assets');
+      await LocalDatabaseService.loadRelicInfoFromAssets();
     }
 
     final relicInfo = await LocalDatabaseService.getAllRelicInfo();
+    print('Loaded ${relicInfo.length} relics from local DB');
+
     final counters = await LocalDatabaseService.getAllCounters();
+    print('Loaded ${counters.length} counters');
 
     final relics = relicInfo.map((info) {
       final gid = info['gid'] as String;
+      final unvaulted = info['unvaulted'] as bool? ?? false;
+      print('Loaded $gid - unvaulted: $unvaulted');
       final counterData = counters.firstWhere(
         (c) => c['relicGid'] == gid,
         orElse: () => {
@@ -65,6 +68,7 @@ class RelicNotifier extends StateNotifier<List<RelicItem>> {
         name: info['name'] as String? ?? '',
         imageUrl: info['imageUrl'] as String? ?? '',
         type: info['type'] as String? ?? '',
+        unvaulted: info['unvaulted'] as bool? ?? false,
         intact: counterData['intact'] as int? ?? 0,
         exceptional: counterData['exceptional'] as int? ?? 0,
         flawless: counterData['flawless'] as int? ?? 0,
@@ -76,15 +80,28 @@ class RelicNotifier extends StateNotifier<List<RelicItem>> {
       );
     }).toList();
 
-    relics.sort((a, b) => _naturalSortCompare(a.name, b.name));
+    relics.sort((a, b) {
+      if (a.unvaulted != b.unvaulted) {
+        return a.unvaulted ? -1 : 1;
+      }
+      return _naturalSortCompare(a.name, b.name);
+    });
     state = relics;
   }
 
   Future<void> refreshFromCloud() async {
+    print('refreshFromCloud called');
+    print('PocketBase isConnected: ${PocketBaseService.isConnected}');
     try {
       await PocketBaseService.syncRelicInfoFromCloud();
-      await _loadData();
-    } catch (e) {}
+      print('syncRelicInfoFromCloud succeeded');
+    } catch (e) {
+      print('syncRelicInfoFromCloud failed: $e');
+      await LocalDatabaseService.loadRelicInfoFromAssets();
+      print('Loaded from assets');
+    }
+    await _loadData();
+    print('_loadData completed');
   }
 
   Future<void> syncCountersFromCloud() async {

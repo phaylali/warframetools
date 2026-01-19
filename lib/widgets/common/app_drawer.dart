@@ -7,72 +7,116 @@ final Uri _url = Uri.parse(
   'https://documents.omniversify.com/warframe_tools.html',
 );
 
+class DrawerOpener extends InheritedWidget {
+  final VoidCallback openDrawer;
+
+  const DrawerOpener({
+    super.key,
+    required this.openDrawer,
+    required super.child,
+  });
+
+  static DrawerOpener? of(BuildContext context) {
+    return context.dependOnInheritedWidgetOfExactType<DrawerOpener>();
+  }
+
+  @override
+  bool updateShouldNotify(DrawerOpener oldWidget) {
+    return openDrawer != oldWidget.openDrawer;
+  }
+}
+
 class AppDrawer extends StatelessWidget {
-  const AppDrawer({super.key});
+  final Widget child;
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  AppDrawer({super.key, required this.child});
+
+  void _openDrawer() {
+    _scaffoldKey.currentState?.openDrawer();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Drawer(
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: [
-          DrawerHeader(
-            decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.primaryContainer,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Icon(
-                  Icons.games,
-                  size: 48,
-                  color: Theme.of(context).colorScheme.onPrimaryContainer,
+    return DrawerOpener(
+      openDrawer: _openDrawer,
+      child: Scaffold(
+        key: _scaffoldKey,
+        drawer: Drawer(
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              DrawerHeader(
+                decoration: BoxDecoration(
+                  color: Theme.of(context).colorScheme.primaryContainer,
                 ),
-                const SizedBox(height: 8),
-                Text(
-                  AppConstants.appName,
-                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                    color: Theme.of(context).colorScheme.onPrimaryContainer,
-                  ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Icon(
+                      Icons.games,
+                      size: 48,
+                      color: Theme.of(context).colorScheme.onPrimaryContainer,
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      AppConstants.appName,
+                      style:
+                          Theme.of(context).textTheme.headlineSmall?.copyWith(
+                                color: Theme.of(context)
+                                    .colorScheme
+                                    .onPrimaryContainer,
+                              ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+              ListTile(
+                leading: const Icon(Icons.home),
+                title: const Text('Home'),
+                onTap: () {
+                  Navigator.pop(context);
+                  context.go(AppConstants.homeRoute);
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.inventory),
+                title: const Text('Relic Counter'),
+                onTap: () {
+                  Navigator.pop(context);
+                  context.go(AppConstants.relicCounterRoute);
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.settings),
+                title: const Text('Settings'),
+                onTap: () {
+                  Navigator.pop(context);
+                  context.go(AppConstants.settingsRoute);
+                },
+              ),
+              const Divider(),
+              ListTile(
+                leading: const Icon(Icons.info),
+                title: const Text('About'),
+                onTap: () {
+                  Navigator.pop(context);
+                  _showAboutDialog(context);
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.info),
+                title: const Text('Privacy Policy'),
+                onTap: () {
+                  Navigator.pop(context);
+                  _showPrivacyDialog(context);
+                },
+              ),
+            ],
           ),
-          ListTile(
-            leading: const Icon(Icons.home),
-            title: const Text('Home'),
-            onTap: () {
-              Navigator.pop(context);
-              context.go(AppConstants.homeRoute);
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.inventory),
-            title: const Text('Relic Counter'),
-            onTap: () {
-              Navigator.pop(context);
-              context.go(AppConstants.relicCounterRoute);
-            },
-          ),
-          const Divider(),
-          ListTile(
-            leading: const Icon(Icons.info),
-            title: const Text('About'),
-            onTap: () {
-              Navigator.pop(context);
-              _showAboutDialog(context);
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.info),
-            title: const Text('Privacy Policy'),
-            onTap: () {
-              Navigator.pop(context);
-              _showPrivacyDialog(context);
-            },
-          ),
-        ],
+        ),
+        body: child,
       ),
     );
   }
@@ -88,7 +132,6 @@ class AppDrawer extends StatelessWidget {
         const Text(
           'A helper app for Warframe players with useful tools and counters.',
         ),
-
         Row(
           children: [
             const Text('Made with '),

@@ -35,7 +35,26 @@ class RelicItemCard extends StatelessWidget {
     }
   }
 
+  Future<void> _launchMarketUrl(String relicId, String type) async {
+    final url =
+        Uri.parse('https://warframe.market/items/${relicId}_relic?type=$type');
+    if (!await launchUrl(url)) {
+      throw Exception('Could not launch the url');
+    }
+  }
+
+  Future<void> _launchRelicWikiUrl(String type, String relicId) async {
+    final formattedRelicId = relicId.replaceAll('_', '-');
+    final url =
+        Uri.parse('https://warframerelics.com/relics/$type/$formattedRelicId');
+    if (!await launchUrl(url)) {
+      throw Exception('Could not launch the url');
+    }
+  }
+
   void _showImagePreviewDialog(BuildContext context) {
+    final relicId = item.id.toLowerCase();
+    final relicType = item.type.toLowerCase();
     showDialog(
       context: context,
       builder: (dialogContext) => Dialog(
@@ -87,18 +106,69 @@ class RelicItemCard extends StatelessWidget {
               ),
             ),
             Padding(
+              padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
+              child: SizedBox(
+                width: double.infinity,
+                child: OutlinedButton.icon(
+                  onPressed: () {
+                    Navigator.pop(dialogContext);
+                    _launchWikiUrl(item.name);
+                  },
+                  icon: const Icon(Icons.open_in_new),
+                  label: const Text('Warframe Wiki'),
+                  style: OutlinedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(vertical: 12),
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
+              child: SizedBox(
+                width: double.infinity,
+                child: OutlinedButton.icon(
+                  onPressed: () {
+                    Navigator.pop(dialogContext);
+                    _launchRelicWikiUrl(relicType, relicId);
+                  },
+                  icon: const Icon(Icons.public),
+                  label: const Text('Relic Wiki'),
+                  style: OutlinedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(vertical: 12),
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
+              child: SizedBox(
+                width: double.infinity,
+                child: FilledButton.icon(
+                  onPressed: () {
+                    Navigator.pop(dialogContext);
+                    _launchMarketUrl(relicId, 'buy');
+                  },
+                  icon: const Icon(Icons.shopping_cart),
+                  label: const Text('Buy'),
+                  style: FilledButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(vertical: 12),
+                  ),
+                ),
+              ),
+            ),
+            Padding(
               padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
               child: SizedBox(
                 width: double.infinity,
                 child: FilledButton.icon(
                   onPressed: () {
                     Navigator.pop(dialogContext);
-                    _launchWikiUrl(item.name);
+                    _launchMarketUrl(relicId, 'sell');
                   },
-                  icon: const Icon(Icons.open_in_new),
-                  label: const Text('More Info'),
+                  icon: const Icon(Icons.sell),
+                  label: const Text('Sell'),
                   style: FilledButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    padding: const EdgeInsets.symmetric(vertical: 12),
                   ),
                 ),
               ),
