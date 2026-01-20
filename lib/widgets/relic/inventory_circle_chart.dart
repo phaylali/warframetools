@@ -86,7 +86,7 @@ class InventoryCircleChart extends ConsumerWidget {
         width: 180,
         height: 180,
         decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.surfaceVariant,
+          color: Theme.of(context).colorScheme.surfaceContainerHighest,
           shape: BoxShape.circle,
         ),
         child: const Center(

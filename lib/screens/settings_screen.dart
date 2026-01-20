@@ -1,7 +1,7 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:riverpod/legacy.dart';
 import '../core/utils/storage_service.dart';
 import '../core/constants/app_constants.dart';
 import '../providers/relic_provider.dart';
@@ -25,7 +25,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
   }
 
   Future<void> _loadSettings() async {
-    final frequency = await StorageService.getRelicUpdateFrequency();
+    final frequency = StorageService.getRelicUpdateFrequency();
     if (mounted) {
       setState(() {
         _updateFrequency = frequency;
@@ -41,19 +41,19 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
   }
 
   Future<void> _updateRelicsNow() async {
-    print('_updateRelicsNow called');
+    if (kDebugMode) print('_updateRelicsNow called');
     if (!mounted) return;
     setState(() => _isSyncing = true);
     try {
       await ref.read(relicProvider.notifier).refreshFromCloud();
-      print('_updateRelicsNow: refreshFromCloud completed');
+      if (kDebugMode) print('_updateRelicsNow: refreshFromCloud completed');
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text('Relics info updated successfully')),
         );
       }
     } catch (e) {
-      print('_updateRelicsNow failed: $e');
+      if (kDebugMode) print('_updateRelicsNow failed: $e');
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Failed to update: $e')),

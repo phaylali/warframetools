@@ -11,9 +11,6 @@ LazyDatabase _openConnection() {
     final dbPath = await getApplicationDocumentsDirectory();
     final path = p.join(dbPath.path, 'warframetools.db');
     final file = File(path);
-    if (await file.exists()) {
-      await file.delete();
-    }
     return NativeDatabase.createInBackground(file);
   });
 }

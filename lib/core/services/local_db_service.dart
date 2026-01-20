@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:drift/drift.dart';
 import 'package:warframetools/core/database/database.dart';
@@ -73,12 +74,12 @@ class LocalDatabaseService {
   }
 
   static Future<void> loadRelicInfoFromAssets() async {
-    print('loadRelicInfoFromAssets called');
+    if (kDebugMode) print('loadRelicInfoFromAssets called');
     try {
       final String jsonString =
           await rootBundle.loadString('assets/data/relics.json');
       final List<dynamic> jsonList = jsonDecode(jsonString);
-      print('Loaded ${jsonList.length} relics from assets');
+      if (kDebugMode) print('Loaded ${jsonList.length} relics from assets');
 
       await database.batch((batch) {
         batch.insertAll(
@@ -97,9 +98,9 @@ class LocalDatabaseService {
           mode: InsertMode.insertOrReplace,
         );
       });
-      print('Inserted ${jsonList.length} relics to DB');
+      if (kDebugMode) print('Inserted ${jsonList.length} relics to DB');
     } catch (e) {
-      print('loadRelicInfoFromAssets failed: $e');
+      if (kDebugMode) print('loadRelicInfoFromAssets failed: $e');
     }
   }
 
@@ -311,6 +312,7 @@ extension on RelicCountersData {
 }
 
 extension on SyncMetadataData {
+  // ignore: unused_element
   Map<String, dynamic> toMap() {
     return {
       'key': key,

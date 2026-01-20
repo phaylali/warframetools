@@ -241,7 +241,7 @@ class RelicItemCard extends StatelessWidget {
               size: 20,
               color: count > 0
                   ? Theme.of(context).colorScheme.error
-                  : Theme.of(context).colorScheme.onSurface.withOpacity(0.2),
+                  : Theme.of(context).colorScheme.onSurface.withAlpha(20),
             ),
           ),
         ),

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:riverpod/riverpod.dart';
 import 'package:riverpod/legacy.dart';
 import '../models/relic_item.dart';
@@ -34,24 +35,26 @@ class RelicNotifier extends StateNotifier<List<RelicItem>> {
   }
 
   Future<void> _loadData() async {
-    print('_loadData called');
+    if (kDebugMode) print('_loadData called');
     try {
       await PocketBaseService.syncRelicInfoFromCloud();
     } catch (e) {
-      print('_loadData: cloud sync failed, loading from assets');
+      if (kDebugMode) {
+        print('_loadData: cloud sync failed, loading from assets');
+      }
       await LocalDatabaseService.loadRelicInfoFromAssets();
     }
 
     final relicInfo = await LocalDatabaseService.getAllRelicInfo();
-    print('Loaded ${relicInfo.length} relics from local DB');
+    if (kDebugMode) print('Loaded ${relicInfo.length} relics from local DB');
 
     final counters = await LocalDatabaseService.getAllCounters();
-    print('Loaded ${counters.length} counters');
+    if (kDebugMode) print('Loaded ${counters.length} counters');
 
     final relics = relicInfo.map((info) {
       final gid = info['gid'] as String;
       final unvaulted = info['unvaulted'] as bool? ?? false;
-      print('Loaded $gid - unvaulted: $unvaulted');
+      if (kDebugMode) print('Loaded $gid - unvaulted: $unvaulted');
       final counterData = counters.firstWhere(
         (c) => c['relicGid'] == gid,
         orElse: () => {
@@ -90,18 +93,21 @@ class RelicNotifier extends StateNotifier<List<RelicItem>> {
   }
 
   Future<void> refreshFromCloud() async {
-    print('refreshFromCloud called');
-    print('PocketBase isConnected: ${PocketBaseService.isConnected}');
+    if (kDebugMode) print('refreshFromCloud called');
+    if (kDebugMode) {
+      print('PocketBase isConnected: ${PocketBaseService.isConnected}');
+    }
     try {
       await PocketBaseService.syncRelicInfoFromCloud();
-      print('syncRelicInfoFromCloud succeeded');
+      if (kDebugMode) print('syncRelicInfoFromCloud succeeded');
     } catch (e) {
-      print('syncRelicInfoFromCloud failed: $e');
+      if (kDebugMode) {
+        print('_loadData: cloud sync failed, loading from assets');
+      }
       await LocalDatabaseService.loadRelicInfoFromAssets();
-      print('Loaded from assets');
     }
     await _loadData();
-    print('_loadData completed');
+    if (kDebugMode) print('_loadData completed');
   }
 
   Future<void> syncCountersFromCloud() async {
@@ -117,14 +123,18 @@ class RelicNotifier extends StateNotifier<List<RelicItem>> {
         );
       }
       await _loadData();
-    } catch (e) {}
+    } catch (e) {
+      // TO DO LATER
+    }
   }
 
   Future<void> syncCountersToCloud() async {
     try {
       final counters = await LocalDatabaseService.getAllCounters();
       await PocketBaseService.pushAllCountersToCloud(counters);
-    } catch (e) {}
+    } catch (e) {
+      // TO DO LATER
+    }
   }
 
   void incrementCondition(String relicGid, String condition) {
@@ -288,7 +298,9 @@ class RelicNotifier extends StateNotifier<List<RelicItem>> {
         'flawless': item.flawless,
         'radiant': item.radiant,
       });
-    } catch (e) {}
+    } catch (e) {
+      // TO DO LATER
+    }
   }
 
   List<RelicItem> getRelicsByType(String type) {

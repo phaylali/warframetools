@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:pocketbase/pocketbase.dart';
 import '../../models/relic_item.dart';
@@ -18,9 +19,9 @@ class PocketBaseService {
 
     try {
       await _pb!.health.check();
-      print('PocketBase connected successfully to $pbUrl');
+      if (kDebugMode) print('PocketBase connected successfully to $pbUrl');
     } catch (e) {
-      print('PocketBase connection failed: $e');
+      if (kDebugMode) print('PocketBase connection failed: $e');
       _pb = null;
     }
   }
@@ -52,15 +53,15 @@ class PocketBaseService {
 
   // Relic INFO operations
   static Future<List<Map<String, dynamic>>> fetchRelicInfoFromCloud() async {
-    print('fetchRelicInfoFromCloud called');
+    if (kDebugMode) print('fetchRelicInfoFromCloud called');
     if (_pb == null) {
-      print('_pb is null, throwing exception');
+      if (kDebugMode) print('_pb is null, throwing exception');
       throw PocketBaseException('Not connected to server');
     }
 
-    print('Fetching from collection: $_relicsInfoCollection');
+    if (kDebugMode) print('Fetching from collection: $_relicsInfoCollection');
     final records = await _pb!.collection(_relicsInfoCollection).getFullList();
-    print('Fetched ${records.length} records');
+    if (kDebugMode) print('Fetched ${records.length} records');
 
     return records.map((record) {
       final data = record.toJson();
@@ -76,11 +77,11 @@ class PocketBaseService {
   }
 
   static Future<void> syncRelicInfoFromCloud() async {
-    print('syncRelicInfoFromCloud called');
+    if (kDebugMode) print('syncRelicInfoFromCloud called');
     final cloudData = await fetchRelicInfoFromCloud();
-    print('Fetched ${cloudData.length} relics from cloud');
+    if (kDebugMode) print('Fetched ${cloudData.length} relics from cloud');
     await LocalDatabaseService.upsertRelicInfoBatch(cloudData);
-    print('Upserted ${cloudData.length} relics to local DB');
+    if (kDebugMode) print('Upserted ${cloudData.length} relics to local DB');
   }
 
   // Counter sync operations
