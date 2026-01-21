@@ -6,4 +6,5 @@ import 'package:warframetools/lists/requiem.dart';
 
 import 'models/relic_item.dart';
 
-final List<RelicItem> allRelics = axiRelics + lithRelics + mesoRelics + neoRelics + requiemRelics;
+final List<RelicItem> allRelics =
+    axiRelics + lithRelics + mesoRelics + neoRelics + requiemRelics;

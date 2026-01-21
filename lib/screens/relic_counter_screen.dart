@@ -6,6 +6,7 @@ import '../core/constants/app_constants.dart';
 import '../models/relic_item.dart';
 import '../providers/relic_provider.dart';
 import '../widgets/relic/relic_item_card.dart';
+import '../widgets/common/app_toolbar.dart';
 
 final selectedFilterProvider = StateProvider<String>((ref) => 'All');
 final searchQueryProvider = StateProvider<String>((ref) => '');
@@ -74,13 +75,10 @@ class _RelicCounterScreenState extends ConsumerState<RelicCounterScreen> {
               }).toList();
 
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: () => context.go(AppConstants.homeRoute),
-          icon: const Icon(Icons.arrow_back),
-          tooltip: 'Back',
-        ),
-        title: const Text('Relic Counter'),
+      appBar: AppToolbar(
+        title: 'Relic Counter',
+        showBackButton: true,
+        onBackPressed: () => context.go(AppConstants.homeRoute),
         actions: [
           IconButton(
             onPressed: () => _showStatsDialog(context, relicItems),

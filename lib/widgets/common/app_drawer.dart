@@ -81,11 +81,11 @@ class AppDrawer extends StatelessWidget {
                 },
               ),
               ListTile(
-                leading: const Icon(Icons.inventory),
-                title: const Text('Relic Counter'),
+                leading: const Icon(Icons.person),
+                title: const Text('Account'),
                 onTap: () {
                   Navigator.pop(context);
-                  context.go(AppConstants.relicCounterRoute);
+                  context.go(AppConstants.accountRoute);
                 },
               ),
               ListTile(

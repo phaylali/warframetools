@@ -8,7 +8,7 @@ class ThemeToggleButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final isDark = ref.watch(themeProvider);
-    
+
     return IconButton(
       onPressed: () => ref.read(themeProvider.notifier).toggleTheme(),
       icon: Icon(

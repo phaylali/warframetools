@@ -28,6 +28,7 @@ dependencies:
   drift: 
   drift_flutter: 
   flutter_dotenv: 
+  flutter_web_auth_2: 
 
 dev_dependencies:
   flutter_test:

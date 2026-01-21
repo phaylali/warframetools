@@ -4,6 +4,7 @@ import '../core/constants/app_constants.dart';
 import '../screens/home_screen.dart';
 import '../screens/relic_counter_screen.dart';
 import '../screens/settings_screen.dart';
+import '../screens/account_screen.dart';
 import '../widgets/common/app_drawer.dart';
 
 final appRouter = GoRouter(
@@ -28,6 +29,11 @@ final appRouter = GoRouter(
           name: 'settings',
           pageBuilder: (context, state) =>
               MaterialPage(child: SettingsScreen()),
+        ),
+        GoRoute(
+          path: AppConstants.accountRoute,
+          name: 'account',
+          pageBuilder: (context, state) => MaterialPage(child: AccountScreen()),
         ),
       ],
     ),

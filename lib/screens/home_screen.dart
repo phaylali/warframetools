@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import '../core/constants/app_constants.dart';
 import '../widgets/relic/inventory_circle_chart.dart';
 import '../widgets/common/app_drawer.dart';
+import '../widgets/common/app_toolbar.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -10,14 +11,10 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.menu),
-          onPressed: () {
-            DrawerOpener.of(context)?.openDrawer();
-          },
-        ),
-        title: const Text(AppConstants.appName),
+      appBar: HomeAppBar(
+        onMenuPressed: () {
+          DrawerOpener.of(context)?.openDrawer();
+        },
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),

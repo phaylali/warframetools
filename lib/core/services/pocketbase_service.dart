@@ -1,7 +1,10 @@
+import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:pocketbase/pocketbase.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../models/relic_item.dart';
 import 'local_db_service.dart';
 
@@ -9,13 +12,25 @@ class PocketBaseService {
   static PocketBase? _pb;
   static const String _relicsInfoCollection = 'relics_info';
   static const String _countersCollection = 'user_counters';
+  static const String _usersCollection = 'users';
+  static const String _authStoreKey = 'pb_auth';
+  static const String _redirectUrlScheme = 'warframetools';
 
   static PocketBase? get instance => _pb;
 
   static Future<void> initialize({String? url}) async {
     final pbUrl =
         url ?? dotenv.env['POCKETBASE_URL'] ?? 'http://localhost:8090';
-    _pb = PocketBase(pbUrl);
+
+    final prefs = await SharedPreferences.getInstance();
+
+    _pb = PocketBase(
+      pbUrl,
+      authStore: AsyncAuthStore(
+        save: (String data) async => prefs.setString(_authStoreKey, data),
+        initial: prefs.getString(_authStoreKey),
+      ),
+    );
 
     try {
       await _pb!.health.check();
@@ -38,9 +53,97 @@ class PocketBaseService {
     }
   }
 
-  static Future<void> authenticate(String email, String password) async {
+  static bool get isAuthenticated => _pb?.authStore.isValid ?? false;
+
+  static String? get currentUserId => _pb?.authStore.record?.id;
+
+  static String? get currentUserEmail =>
+      _pb?.authStore.record?.getStringValue('email');
+
+  static String? get currentUserName =>
+      _pb?.authStore.record?.getStringValue('username');
+
+  static bool get isVerified =>
+      _pb?.authStore.record?.getBoolValue('verified') ?? false;
+
+  static String generateUsername() {
+    final random =
+        List.generate(9, (index) => (index == 0 ? '1' : '${_randomDigit()}'))
+            .join();
+    return 'omniversify-$random';
+  }
+
+  static int _randomDigit() {
+    return DateTime.now().millisecond % 10;
+  }
+
+  static Future<void> authenticateWithPassword(
+      String email, String password) async {
     if (_pb == null) throw PocketBaseException('Not connected to server');
-    await _pb!.collection('users').authWithPassword(email, password);
+
+    await _pb!.collection(_usersCollection).authWithPassword(
+          email,
+          password,
+        );
+  }
+
+  static Future<void> signUp({
+    required String email,
+    required String password,
+    String? username,
+  }) async {
+    if (_pb == null) throw PocketBaseException('Not connected to server');
+
+    final userData = {
+      'email': email,
+      'password': password,
+      'passwordConfirm': password,
+      'username': username ?? generateUsername(),
+      'verified': false,
+    };
+
+    await _pb!.collection(_usersCollection).create(body: userData);
+
+    await authenticateWithPassword(email, password);
+  }
+
+  static Future<void> authenticateWithGoogle() async {
+    if (_pb == null) throw PocketBaseException('Not connected to server');
+
+    final redirectUrl = '$_redirectUrlScheme://oauth-callback';
+
+    await _pb!.collection(_usersCollection).authWithOAuth2(
+      'google',
+      (url) async {
+        final authUrl = Uri.parse(url.toString());
+        final redirectUri = Uri.parse(redirectUrl);
+        final authUri = authUrl.replace(
+          queryParameters: {
+            ...authUrl.queryParameters,
+            'redirect_uri': redirectUri.toString(),
+          },
+        );
+
+        if (kDebugMode) print('Opening Google OAuth URL: $authUri');
+
+        await _launchUrl(authUri);
+      },
+      createData: {
+        'username': generateUsername(),
+      },
+    );
+  }
+
+  static Future<void> _launchUrl(Uri url) async {
+    try {
+      await launchUrl(
+        url,
+        mode: LaunchMode.externalApplication,
+      );
+    } catch (e) {
+      if (kDebugMode) print('Failed to launch URL: $e');
+      throw PocketBaseException('Could not open browser for authentication');
+    }
   }
 
   static Future<void> signOut() async {
@@ -49,9 +152,127 @@ class PocketBaseService {
     }
   }
 
-  static bool get isAuthenticated => _pb?.authStore.isValid ?? false;
+  static Future<void> authRefresh() async {
+    if (_pb == null) throw PocketBaseException('Not connected to server');
 
-  // Relic INFO operations
+    await _pb!.collection(_usersCollection).authRefresh();
+  }
+
+  static Future<List<String>> getAvailableAuthMethods() async {
+    if (_pb == null) throw PocketBaseException('Not connected to server');
+
+    final methods = await _pb!.collection(_usersCollection).listAuthMethods();
+
+    final providers = methods.oauth2.providers;
+    final providerNames =
+        providers.map((p) => p.name).where((n) => n.isNotEmpty).toList();
+
+    if (methods.password.enabled) {
+      providerNames.insert(0, 'password');
+    }
+
+    return providerNames;
+  }
+
+  static Future<bool> isOAuth2ProviderEnabled(String provider) async {
+    if (_pb == null) return false;
+
+    try {
+      final methods = await _pb!.collection(_usersCollection).listAuthMethods();
+      final providers = methods.oauth2.providers;
+      return providers.any((p) => p.name == provider);
+    } catch (e) {
+      return false;
+    }
+  }
+
+  static Future<void> updateUserProfile({
+    String? username,
+    String? email,
+  }) async {
+    if (_pb == null) throw PocketBaseException('Not connected to server');
+    if (!isAuthenticated) throw PocketBaseException('Not authenticated');
+
+    final updates = <String, dynamic>{};
+
+    if (username != null) {
+      updates['username'] = username;
+    }
+
+    if (email != null) {
+      updates['email'] = email;
+    }
+
+    if (updates.isNotEmpty) {
+      await _pb!.collection(_usersCollection).update(
+            currentUserId!,
+            body: updates,
+          );
+    }
+  }
+
+  static Future<void> requestPasswordReset(String email) async {
+    if (_pb == null) throw PocketBaseException('Not connected to server');
+
+    await _pb!.collection(_usersCollection).requestPasswordReset(email);
+  }
+
+  static Future<void> requestEmailChange(String newEmail) async {
+    if (_pb == null) throw PocketBaseException('Not connected to server');
+    if (!isAuthenticated) throw PocketBaseException('Not authenticated');
+
+    await _pb!.collection(_usersCollection).requestEmailChange(newEmail);
+  }
+
+  static Future<void> confirmEmailChange(String token, String password) async {
+    if (_pb == null) throw PocketBaseException('Not connected to server');
+
+    await _pb!.collection(_usersCollection).confirmEmailChange(
+          token,
+          password,
+        );
+  }
+
+  static Future<void> confirmPasswordReset(
+      String token, String newPassword) async {
+    if (_pb == null) throw PocketBaseException('Not connected to server');
+
+    await _pb!.collection(_usersCollection).confirmPasswordReset(
+          token,
+          newPassword,
+          newPassword,
+        );
+  }
+
+  static Future<void> requestVerification(String email) async {
+    if (_pb == null) throw PocketBaseException('Not connected to server');
+
+    await _pb!.collection(_usersCollection).requestVerification(email);
+  }
+
+  static Future<void> confirmVerification(String token) async {
+    if (_pb == null) throw PocketBaseException('Not connected to server');
+
+    await _pb!.collection(_usersCollection).confirmVerification(token);
+  }
+
+  static Future<void> deleteAccount(String password) async {
+    if (_pb == null) throw PocketBaseException('Not connected to server');
+    if (!isAuthenticated) throw PocketBaseException('Not authenticated');
+
+    await _pb!.collection(_usersCollection).delete(
+      currentUserId!,
+      body: {'password': password},
+    );
+
+    signOut();
+  }
+
+  static String? get authToken => _pb?.authStore.token;
+
+  static Map<String, dynamic>? get authRecord =>
+      _pb?.authStore.record?.toJson();
+
   static Future<List<Map<String, dynamic>>> fetchRelicInfoFromCloud() async {
     if (kDebugMode) print('fetchRelicInfoFromCloud called');
     if (_pb == null) {
@@ -84,7 +305,6 @@ class PocketBaseService {
     if (kDebugMode) print('Upserted ${cloudData.length} relics to local DB');
   }
 
-  // Counter sync operations
   static Future<List<Map<String, dynamic>>> fetchCountersFromCloud() async {
     if (_pb == null) throw PocketBaseException('Not connected to server');
     if (!isAuthenticated) throw PocketBaseException('Not authenticated');

@@ -6,6 +6,7 @@ import '../core/utils/storage_service.dart';
 import '../core/constants/app_constants.dart';
 import '../providers/relic_provider.dart';
 import '../providers/theme_provider.dart';
+import '../widgets/common/app_toolbar.dart';
 
 class SettingsScreen extends ConsumerStatefulWidget {
   const SettingsScreen({super.key});
@@ -162,13 +163,10 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
   Widget build(BuildContext context) {
     final isDark = ref.watch(themeProvider);
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          onPressed: () => context.go(AppConstants.homeRoute),
-          icon: const Icon(Icons.arrow_back),
-          tooltip: 'Back',
-        ),
-        title: const Text('Settings'),
+      appBar: AppToolbar(
+        title: 'Settings',
+        showBackButton: true,
+        onBackPressed: () => context.go(AppConstants.homeRoute),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
