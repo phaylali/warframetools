@@ -29,6 +29,7 @@ dependencies:
   drift_flutter: 
   flutter_dotenv: 
   flutter_web_auth_2: 
+  http: 
 
 dev_dependencies:
   flutter_test:
@@ -37,7 +38,6 @@ dev_dependencies:
   flutter_launcher_icons: 
   build_runner: 
   json_serializable: 
-  http: 
   drift_dev: 
 
 flutter:

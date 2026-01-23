@@ -1,7 +1,9 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../models/relic_item.dart';
+import '../../core/services/image_cache_service.dart';
 
 class RelicItemCard extends StatelessWidget {
   final RelicItem item;
@@ -80,28 +82,7 @@ class RelicItemCard extends StatelessWidget {
                 ),
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(12),
-                  child: CachedNetworkImage(
-                    imageUrl: item.imageUrl,
-                    width: double.infinity,
-                    fit: BoxFit.contain,
-                    placeholder: (context, url) => Container(
-                      width: double.infinity,
-                      height: 200,
-                      color:
-                          Theme.of(context).colorScheme.surfaceContainerHighest,
-                      child: const Center(child: CircularProgressIndicator()),
-                    ),
-                    errorWidget: (context, url, error) => Container(
-                      width: double.infinity,
-                      height: 200,
-                      color: Theme.of(context).colorScheme.errorContainer,
-                      child: Icon(
-                        Icons.broken_image,
-                        size: 64,
-                        color: Theme.of(context).colorScheme.onErrorContainer,
-                      ),
-                    ),
-                  ),
+                  child: _buildRelicImage(context, double.infinity),
                 ),
               ),
             ),
@@ -176,6 +157,54 @@ class RelicItemCard extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildRelicImage(BuildContext context, double size,
+      {VoidCallback? onTap}) {
+    final localPath = ImageCacheService.getLocalImagePathByType(item.type);
+    final imageWidget = localPath != null && localPath.isNotEmpty
+        ? Image.file(
+            File(localPath),
+            width: size,
+            height: size,
+            fit: BoxFit.contain,
+            errorBuilder: (context, error, stack) =>
+                _buildPlaceholder(context, size),
+          )
+        : CachedNetworkImage(
+            imageUrl: item.imageUrl,
+            width: size,
+            height: size,
+            fit: BoxFit.contain,
+            placeholder: (context, url) => _buildPlaceholder(context, size),
+            errorWidget: (context, url, error) =>
+                _buildPlaceholder(context, size),
+          );
+
+    if (onTap != null) {
+      return InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(8),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(8),
+          child: imageWidget,
+        ),
+      );
+    }
+
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(8),
+      child: imageWidget,
+    );
+  }
+
+  Widget _buildPlaceholder(BuildContext context, double size) {
+    return Container(
+      width: size,
+      height: size,
+      color: Theme.of(context).colorScheme.surfaceContainerHighest,
+      child: Icon(Icons.image, size: size * 0.54),
     );
   }
 
@@ -259,31 +288,7 @@ class RelicItemCard extends StatelessWidget {
             InkWell(
               onTap: () => _showImagePreviewDialog(context),
               borderRadius: BorderRadius.circular(8),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(8),
-                child: CachedNetworkImage(
-                  imageUrl: item.imageUrl,
-                  width: 52,
-                  height: 52,
-                  placeholder: (context, url) => Container(
-                    width: 52,
-                    height: 52,
-                    color:
-                        Theme.of(context).colorScheme.surfaceContainerHighest,
-                    child: const Icon(Icons.image, size: 28),
-                  ),
-                  errorWidget: (context, url, error) => Container(
-                    width: 52,
-                    height: 52,
-                    color: Theme.of(context).colorScheme.errorContainer,
-                    child: Icon(
-                      Icons.broken_image,
-                      color: Theme.of(context).colorScheme.onErrorContainer,
-                      size: 28,
-                    ),
-                  ),
-                ),
-              ),
+              child: _buildRelicImage(context, 52),
             ),
             const SizedBox(width: 12),
             Expanded(
