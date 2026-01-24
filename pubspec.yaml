@@ -30,6 +30,8 @@ dependencies:
   flutter_dotenv: 
   flutter_web_auth_2: 
   http: 
+  app_links: ^7.0.0
+  email_validator: ^3.0.0
 
 dev_dependencies:
   flutter_test:

@@ -63,6 +63,9 @@ class PocketBaseService {
   static String? get currentUserName =>
       _pb?.authStore.record?.getStringValue('username');
 
+  static String? get currentUserAvatarUrl =>
+      _pb?.authStore.record?.getStringValue('avatarUrl');
+
   static bool get isVerified =>
       _pb?.authStore.record?.getBoolValue('verified') ?? false;
 
@@ -189,6 +192,7 @@ class PocketBaseService {
   static Future<void> updateUserProfile({
     String? username,
     String? email,
+    String? avatarUrl,
   }) async {
     if (_pb == null) throw PocketBaseException('Not connected to server');
     if (!isAuthenticated) throw PocketBaseException('Not authenticated');
@@ -203,12 +207,31 @@ class PocketBaseService {
       updates['email'] = email;
     }
 
+    if (avatarUrl != null) {
+      updates['avatarUrl'] = avatarUrl;
+    }
+
     if (updates.isNotEmpty) {
       await _pb!.collection(_usersCollection).update(
             currentUserId!,
             body: updates,
           );
     }
+  }
+
+  static Future<void> changePassword(
+      String currentPassword, String newPassword) async {
+    if (_pb == null) throw PocketBaseException('Not connected to server');
+    if (!isAuthenticated) throw PocketBaseException('Not authenticated');
+
+    await _pb!.collection(_usersCollection).update(
+      currentUserId!,
+      body: {
+        'oldPassword': currentPassword,
+        'password': newPassword,
+        'passwordConfirm': newPassword,
+      },
+    );
   }
 
   static Future<void> requestPasswordReset(String email) async {
@@ -272,6 +295,21 @@ class PocketBaseService {
 
   static Map<String, dynamic>? get authRecord =>
       _pb?.authStore.record?.toJson();
+
+  static Future<List<Map<String, dynamic>>> fetchAvatarsFromCloud() async {
+    if (_pb == null) throw PocketBaseException('Not connected to server');
+
+    final records = await _pb!.collection('avatars').getFullList();
+
+    return records.map((record) {
+      final data = record.toJson();
+      return {
+        'id': record.id,
+        'name': data['name'] as String? ?? '',
+        'imageUrl': data['imageUrl'] as String? ?? '',
+      };
+    }).toList();
+  }
 
   static Future<List<Map<String, dynamic>>> fetchRelicInfoFromCloud() async {
     if (kDebugMode) print('fetchRelicInfoFromCloud called');

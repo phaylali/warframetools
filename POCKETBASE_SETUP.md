@@ -10,6 +10,7 @@ This guide explains how to set up PocketBase for the WarframeTools app authentic
 ## 1. Running PocketBase
 
 ### Docker (Recommended)
+
 ```bash
 docker run -d \
   --name pocketbase \
@@ -20,6 +21,7 @@ docker run -d \
 ```
 
 ### Local Development
+
 ```bash
 ./pocketbase serve
 ```
@@ -40,6 +42,7 @@ Access the admin UI at: `http://localhost:8090/_/`
 The `users` collection should exist by default. Configure it as follows:
 
 **Fields:**
+
 | Field Name | Type | Required | Unique | Notes |
 |------------|------|----------|--------|-------|
 | email | Email | Yes | Yes | Primary identity |
@@ -48,6 +51,7 @@ The `users` collection should exist by default. Configure it as follows:
 | avatar | File | No | No | Profile picture |
 
 **API Rules:**
+
 | Rule Type | Rule |
 |-----------|------|
 | List/View | `@request.auth.id != ""` |
@@ -60,6 +64,7 @@ The `users` collection should exist by default. Configure it as follows:
 **Purpose:** Read-only relic metadata (synced from bundled data)
 
 **Fields:**
+
 | Field Name | Type | Required | Notes |
 |------------|------|----------|-------|
 | gid | Text | Yes | Unique identifier (e.g., "lith_a1") |
@@ -69,6 +74,7 @@ The `users` collection should exist by default. Configure it as follows:
 | unvaulted | Bool | No | Default false |
 
 **API Rules:**
+
 | Rule Type | Rule |
 |-----------|------|
 | List/View | `""` (public read-only) |
@@ -79,6 +85,7 @@ The `users` collection should exist by default. Configure it as follows:
 **Purpose:** User-specific relic counter data
 
 **Fields:**
+
 | Field Name | Type | Required | Notes |
 |------------|------|----------|-------|
 | relicGid | Text | Yes | Foreign key to relics_info.gid |
@@ -88,6 +95,7 @@ The `users` collection should exist by default. Configure it as follows:
 | radiant | Number | No | Default 0 |
 
 **API Rules:**
+
 | Rule Type | Rule |
 |-----------|------|
 | List/View | `@request.auth.id != ""` |
@@ -111,6 +119,7 @@ The `users` collection should exist by default. Configure it as follows:
    - **iOS** for iOS app (requires bundle ID)
 
 3. Configure authorized redirect URIs:
+
    ```
    http://localhost:8090/oauth2-redirect
    https://your-production-domain.com/oauth2-redirect
@@ -135,6 +144,7 @@ The `users` collection should exist by default. Configure it as follows:
 ### 4.5 Required Scopes
 
 The Google OAuth2 should request these scopes:
+
 - `openid`
 - `email`
 - `profile`
@@ -155,12 +165,14 @@ For email verification and password reset:
 
 1. Go to PocketBase Settings > Mail settings
 2. Configure SMTP:
+
    ```
    SMTP Host: smtp.gmail.com (or your provider)
    SMTP Port: 587
    SMTP Username: your-email@gmail.com
    SMTP Password: your-app-password
    ```
+
 3. Or use a service like SendGrid, Mailgun, etc.
 
 ## 7. Testing Authentication
@@ -196,6 +208,7 @@ Configure in PocketBase settings to prevent abuse.
 ### HTTPS in Production
 
 Always use HTTPS in production for:
+
 - PocketBase server
 - OAuth redirect URIs
 
@@ -204,6 +217,7 @@ Always use HTTPS in production for:
 ### OAuth Redirect Issues
 
 If Google OAuth fails with redirect errors:
+
 1. Verify redirect URIs in Google Cloud Console
 2. Ensure exact match (no trailing slashes)
 3. Check PocketBase logs: `http://localhost:8090/api/debug`

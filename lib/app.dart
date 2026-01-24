@@ -12,7 +12,7 @@ class WarframeHelperApp extends ConsumerWidget {
     final isDarkMode = ref.watch(themeProvider);
 
     return MaterialApp.router(
-      title: 'Warframe Helper',
+      title: 'Warframe Tools',
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       themeMode: isDarkMode ? ThemeMode.dark : ThemeMode.light,

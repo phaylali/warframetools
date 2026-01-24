@@ -5,9 +5,13 @@ import '../screens/home_screen.dart';
 import '../screens/relic_counter_screen.dart';
 import '../screens/settings_screen.dart';
 import '../screens/account_screen.dart';
+import '../screens/password_reset_screen.dart';
 import '../widgets/common/app_drawer.dart';
 
+final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+
 final appRouter = GoRouter(
+  navigatorKey: navigatorKey,
   initialLocation: AppConstants.homeRoute,
   routes: [
     ShellRoute(
@@ -34,6 +38,12 @@ final appRouter = GoRouter(
           path: AppConstants.accountRoute,
           name: 'account',
           pageBuilder: (context, state) => MaterialPage(child: AccountScreen()),
+        ),
+        GoRoute(
+          path: '/password-reset',
+          name: 'password-reset',
+          pageBuilder: (context, state) =>
+              MaterialPage(child: PasswordResetScreen()),
         ),
       ],
     ),
