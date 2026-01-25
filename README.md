@@ -104,18 +104,22 @@ For cloud sync functionality, you'll need a PocketBase instance running:
 
 2. **Create the collections**
 
-   **relics_info** (read-only, for initial sync):
+   **relics_info** (read-only):
    - `gid` (text, unique)
    - `name` (text)
    - `imageUrl` (text)
    - `type` (text)
+   - `unvaulted` (bool)
 
-   **user_counters** (requires auth):
-   - `relicGid` (text, unique)
-   - `intact` (number)
-   - `exceptional` (number)
-   - `flawless` (number)
-   - `radiant` (number)
+   **avatars** (read-only):
+   - `name` (text)
+   - `imageUrl` (text)
+
+   **users** (system collection):
+   - `email` (text)
+   - `username` (text)
+   - `avatarUrl` (text)
+   - `relics_owned` (json)
 
 3. **Configure the app**
    - Update `lib/core/services/pocketbase_service.dart` if using a different URL

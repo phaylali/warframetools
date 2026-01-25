@@ -46,9 +46,10 @@ The `users` collection should exist by default. Configure it as follows:
 | Field Name | Type | Required | Unique | Notes |
 |------------|------|----------|--------|-------|
 | email | Email | Yes | Yes | Primary identity |
-| username | Text | No | Yes | Display name, auto-generated like "omniversify-123456789" |
+| username | Text | No | Yes | Display name |
 | verified | Bool | No | No | Default false |
-| avatar | File | No | No | Profile picture |
+| avatarUrl | URL | No | No | Profile picture link |
+| relics_owned | Json | No | No | Sparse relic counters data |
 
 **API Rules:**
 
@@ -80,27 +81,23 @@ The `users` collection should exist by default. Configure it as follows:
 | List/View | `""` (public read-only) |
 | Create/Update/Delete | `@request.auth.id != ""` (admin only) |
 
-### 3.3 Create `user_counters` Collection
+### 3.3 Create `avatars` Collection
 
-**Purpose:** User-specific relic counter data
+**Purpose:** Predefined avatar images for users
 
 **Fields:**
 
 | Field Name | Type | Required | Notes |
 |------------|------|----------|-------|
-| relicGid | Text | Yes | Foreign key to relics_info.gid |
-| intact | Number | No | Default 0 |
-| exceptional | Number | No | Default 0 |
-| flawless | Number | No | Default 0 |
-| radiant | Number | No | Default 0 |
+| name | Text | Yes | Short name for avatar |
+| imageUrl | URL | Yes | Public link to the avatar image |
 
 **API Rules:**
 
 | Rule Type | Rule |
 |-----------|------|
-| List/View | `@request.auth.id != ""` |
-| Create/Update | `@request.auth.id != ""` |
-| Delete | `@request.auth.id != ""` |
+| List/View | `""` (public read-only) |
+| Create/Update/Delete | `@request.auth.id != ""` (admin only) |
 
 ## 4. Google OAuth2 Setup
 
@@ -196,9 +193,8 @@ For email verification and password reset:
 // users collection - allow self-update only
 Update: @request.auth.id = @request.id
 
-// user_counters - ensure users only see/modify their own data
+// Ensure users only see/modify their own record
 List/View: @request.auth.id != ""
-Create/Update: @request.auth.id != ""
 ```
 
 ### Rate Limiting
@@ -228,10 +224,10 @@ If Google OAuth fails with redirect errors:
 2. Verify API rules are correct
 3. Ensure collections are created properly
 
-### Users Not Syncing
+### User Data Not Syncing
 
-1. Verify `user_counters` collection exists
-2. Check API rules allow write access
+1. Verify server connection
+2. Check API rules allow read access to `relics_info` and `avatars`
 3. Confirm network connectivity
 
 ## 10. Production Deployment

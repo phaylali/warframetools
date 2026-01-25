@@ -11,7 +11,6 @@ import 'local_db_service.dart';
 class PocketBaseService {
   static PocketBase? _pb;
   static const String _relicsInfoCollection = 'relics_info';
-  static const String _countersCollection = 'user_counters';
   static const String _usersCollection = 'users';
   static const String _authStoreKey = 'pb_auth';
   static const String _redirectUrlScheme = 'warframetools';
@@ -377,62 +376,6 @@ class PocketBaseService {
     if (kDebugMode) print('Fetched ${cloudData.length} relics from cloud');
     await LocalDatabaseService.upsertRelicInfoBatch(cloudData);
     if (kDebugMode) print('Upserted ${cloudData.length} relics to local DB');
-  }
-
-  static Future<List<Map<String, dynamic>>> fetchCountersFromCloud() async {
-    if (_pb == null) throw PocketBaseException('Not connected to server');
-    if (!isAuthenticated) throw PocketBaseException('Not authenticated');
-
-    final records = await _pb!.collection(_countersCollection).getFullList();
-
-    return records.map((record) {
-      final data = record.toJson();
-      return {
-        'id': record.id,
-        'relicGid': data['relicGid'] as String? ?? '',
-        'intact': (data['intact'] as num?)?.toInt() ?? 0,
-        'exceptional': (data['exceptional'] as num?)?.toInt() ?? 0,
-        'flawless': (data['flawless'] as num?)?.toInt() ?? 0,
-        'radiant': (data['radiant'] as num?)?.toInt() ?? 0,
-      };
-    }).toList();
-  }
-
-  static Future<void> pushCounterToCloud(
-      String relicGid, Map<String, dynamic> counters) async {
-    if (_pb == null) throw PocketBaseException('Not connected to server');
-    if (!isAuthenticated) throw PocketBaseException('Not authenticated');
-
-    final existingRecords = await _pb!.collection(_countersCollection).getList(
-          filter: 'relicGid = "$relicGid"',
-        );
-
-    final data = {
-      'relicGid': relicGid,
-      'intact': counters['intact'],
-      'exceptional': counters['exceptional'],
-      'flawless': counters['flawless'],
-      'radiant': counters['radiant'],
-    };
-
-    if (existingRecords.items.isNotEmpty) {
-      await _pb!.collection(_countersCollection).update(
-            existingRecords.items.first.id,
-            body: data,
-          );
-    } else {
-      await _pb!.collection(_countersCollection).create(body: data);
-    }
-  }
-
-  static Future<void> pushAllCountersToCloud(
-      List<Map<String, dynamic>> counters) async {
-    if (_pb == null) throw PocketBaseException('Not connected to server');
-    if (!isAuthenticated) throw PocketBaseException('Not authenticated');
-
-    for (final counter in counters) {
-      await pushCounterToCloud(counter['relicGid'], counter);
-    }
   }
 
   static String exportRelicsAsJson(List<RelicItem> items) {
