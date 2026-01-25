@@ -101,13 +101,28 @@ class PocketBaseService {
       'email': email,
       'password': password,
       'passwordConfirm': password,
-      'username': username ?? generateUsername(),
+      'username': username?.toLowerCase() ?? generateUsername(),
       'verified': false,
     };
 
-    await _pb!.collection(_usersCollection).create(body: userData);
+    final userRecord =
+        await _pb!.collection(_usersCollection).create(body: userData);
 
+    // Authenticate to perform updates if needed
     await authenticateWithPassword(email, password);
+
+    // Assign random avatar
+    try {
+      final avatars = await fetchAvatarsFromCloud();
+      if (avatars.isNotEmpty) {
+        final randomAvatar =
+            avatars[DateTime.now().microsecond % avatars.length];
+        await updateUserProfile(avatarUrl: randomAvatar['imageUrl'] as String);
+      }
+    } catch (e) {
+      if (kDebugMode) print('Failed to assign random avatar: $e');
+      // Non-critical error, continue
+    }
   }
 
   static Future<void> authenticateWithGoogle() async {
@@ -216,6 +231,8 @@ class PocketBaseService {
             currentUserId!,
             body: updates,
           );
+      // Refresh local auth store to reflect changes
+      await _pb!.collection(_usersCollection).authRefresh();
     }
   }
 
@@ -295,6 +312,25 @@ class PocketBaseService {
 
   static Map<String, dynamic>? get authRecord =>
       _pb?.authStore.record?.toJson();
+
+  static Future<Map<String, dynamic>> getCloudCounters() async {
+    if (_pb == null) throw PocketBaseException('Not connected to server');
+    if (!isAuthenticated) throw PocketBaseException('Not authenticated');
+
+    final record =
+        await _pb!.collection(_usersCollection).getOne(currentUserId!);
+    return (record.data['relics_owned'] as Map<String, dynamic>?) ?? {};
+  }
+
+  static Future<void> updateCloudCounters(Map<String, dynamic> data) async {
+    if (_pb == null) throw PocketBaseException('Not connected to server');
+    if (!isAuthenticated) throw PocketBaseException('Not authenticated');
+
+    await _pb!.collection(_usersCollection).update(
+      currentUserId!,
+      body: {'relics_owned': data},
+    );
+  }
 
   static Future<List<Map<String, dynamic>>> fetchAvatarsFromCloud() async {
     if (_pb == null) throw PocketBaseException('Not connected to server');

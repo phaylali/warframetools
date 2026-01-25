@@ -7,6 +7,8 @@ import '../core/constants/app_constants.dart';
 import '../providers/relic_provider.dart';
 import '../providers/theme_provider.dart';
 import '../widgets/common/app_toolbar.dart';
+import '../widgets/relic/sync_conflict_dialog.dart';
+import '../core/services/pocketbase_service.dart';
 
 class SettingsScreen extends ConsumerStatefulWidget {
   const SettingsScreen({super.key});
@@ -95,67 +97,17 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
     );
   }
 
-  Future<void> _syncFromServer() async {
-    if (!mounted) return;
-    setState(() => _isSyncing = true);
-    try {
-      await ref.read(relicProvider.notifier).syncCountersFromCloud();
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Synced from server')),
-        );
-      }
-    } finally {
-      if (mounted) {
-        setState(() => _isSyncing = false);
-      }
+  void _showSyncConflictDialog() {
+    if (!PocketBaseService.isAuthenticated) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Please sign in to sync with cloud')),
+      );
+      return;
     }
-  }
-
-  Future<void> _syncToServer() async {
-    if (!mounted) return;
-    setState(() => _isSyncing = true);
-    try {
-      await ref.read(relicProvider.notifier).syncCountersToCloud();
-      if (mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Synced to server')),
-        );
-      }
-    } finally {
-      if (mounted) {
-        setState(() => _isSyncing = false);
-      }
-    }
-  }
-
-  void _showSyncDialog() {
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
-        title: const Text('Sync with Server'),
-        content: const Text('Choose sync direction:'),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.pop(context);
-              _syncFromServer();
-            },
-            child: const Text('Pull from Server'),
-          ),
-          FilledButton(
-            onPressed: () {
-              Navigator.pop(context);
-              _syncToServer();
-            },
-            child: const Text('Push to Server'),
-          ),
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('Cancel'),
-          ),
-        ],
-      ),
+      barrierDismissible: false,
+      builder: (context) => const SyncConflictDialog(),
     );
   }
 
@@ -260,14 +212,20 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               ),
             ),
             const SizedBox(height: 16),
-            SizedBox(
-              width: double.infinity,
-              child: FilledButton(
-                onPressed: _isSyncing ? null : _updateRelicsNow,
-                style: FilledButton.styleFrom(
-                  padding: const EdgeInsets.symmetric(vertical: 16),
+            Center(
+              child: ConstrainedBox(
+                constraints:
+                    const BoxConstraints(maxWidth: AppConstants.maxButtonWidth),
+                child: SizedBox(
+                  width: double.infinity,
+                  child: FilledButton(
+                    onPressed: _isSyncing ? null : _updateRelicsNow,
+                    style: FilledButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(vertical: 16),
+                    ),
+                    child: const Text('Update Relics Info Now'),
+                  ),
                 ),
-                child: const Text('Update Relics Info Now'),
               ),
             ),
             const SizedBox(height: 24),
@@ -282,7 +240,7 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
               child: Column(
                 children: [
                   InkWell(
-                    onTap: _isSyncing ? null : _showSyncDialog,
+                    onTap: _isSyncing ? null : _showSyncConflictDialog,
                     child: ListTile(
                       leading: const Icon(Icons.sync),
                       title: const Text('Sync with Server'),

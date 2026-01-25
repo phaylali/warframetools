@@ -111,30 +111,103 @@ class RelicNotifier extends StateNotifier<List<RelicItem>> {
   }
 
   Future<void> syncCountersFromCloud() async {
-    try {
-      final cloudCounters = await PocketBaseService.fetchCountersFromCloud();
-      for (final counter in cloudCounters) {
-        await LocalDatabaseService.upsertRelicCounters(
-          relicGid: counter['relicGid'],
-          intact: counter['intact'],
-          exceptional: counter['exceptional'],
-          flawless: counter['flawless'],
-          radiant: counter['radiant'],
-        );
-      }
-      await _loadData();
-    } catch (e) {
-      // TO DO LATER
-    }
+    // This will now be handled by the conflict dialog
   }
 
   Future<void> syncCountersToCloud() async {
+    if (!PocketBaseService.isAuthenticated) return;
     try {
-      final counters = await LocalDatabaseService.getAllCounters();
-      await PocketBaseService.pushAllCountersToCloud(counters);
+      final sparseData = getSparseJson();
+      await PocketBaseService.updateCloudCounters(sparseData);
     } catch (e) {
-      // TO DO LATER
+      if (kDebugMode) print('syncCountersToCloud failed: $e');
     }
+  }
+
+  Map<String, dynamic> getSparseJson() {
+    final Map<String, dynamic> sparse = {};
+    for (final item in state) {
+      if (item.counter > 0) {
+        sparse[item.id] = [
+          item.intact,
+          item.exceptional,
+          item.flawless,
+          item.radiant,
+        ];
+      }
+    }
+    return sparse;
+  }
+
+  Future<void> applySparseJson(Map<String, dynamic> data) async {
+    final Map<String, RelicItem> updatedMap = {
+      for (final item in state)
+        item.id: item.copyWith(
+          intact: 0,
+          exceptional: 0,
+          flawless: 0,
+          radiant: 0,
+          counter: 0,
+        )
+    };
+
+    data.forEach((gid, counters) {
+      if (counters is List && counters.length == 4) {
+        final item = updatedMap[gid];
+        if (item != null) {
+          final intact = (counters[0] as num).toInt();
+          final exceptional = (counters[1] as num).toInt();
+          final flawless = (counters[2] as num).toInt();
+          final radiant = (counters[3] as num).toInt();
+          updatedMap[gid] = item.copyWith(
+            intact: intact,
+            exceptional: exceptional,
+            flawless: flawless,
+            radiant: radiant,
+            counter: intact + exceptional + flawless + radiant,
+          );
+        }
+      }
+    });
+
+    state = updatedMap.values.toList();
+    await _saveAllData();
+  }
+
+  Future<void> mergeWithSparseJson(Map<String, dynamic> data) async {
+    final Map<String, RelicItem> updatedMap = {
+      for (final item in state) item.id: item
+    };
+
+    data.forEach((gid, counters) {
+      if (counters is List && counters.length == 4) {
+        final item = updatedMap[gid];
+        if (item != null) {
+          final cIntact = (counters[0] as num).toInt();
+          final cExceptional = (counters[1] as num).toInt();
+          final cFlawless = (counters[2] as num).toInt();
+          final cRadiant = (counters[3] as num).toInt();
+
+          final intact = cIntact > item.intact ? cIntact : item.intact;
+          final exceptional =
+              cExceptional > item.exceptional ? cExceptional : item.exceptional;
+          final flawless =
+              cFlawless > item.flawless ? cFlawless : item.flawless;
+          final radiant = cRadiant > item.radiant ? cRadiant : item.radiant;
+
+          updatedMap[gid] = item.copyWith(
+            intact: intact,
+            exceptional: exceptional,
+            flawless: flawless,
+            radiant: radiant,
+            counter: intact + exceptional + flawless + radiant,
+          );
+        }
+      }
+    });
+
+    state = updatedMap.values.toList();
+    await _saveAllData();
   }
 
   void incrementCondition(String relicGid, String condition) {
@@ -290,16 +363,12 @@ class RelicNotifier extends StateNotifier<List<RelicItem>> {
   }
 
   void _syncSingleToCloud(String relicGid) async {
+    if (!PocketBaseService.isAuthenticated) return;
     try {
-      final item = state.firstWhere((i) => i.id == relicGid);
-      await PocketBaseService.pushCounterToCloud(relicGid, {
-        'intact': item.intact,
-        'exceptional': item.exceptional,
-        'flawless': item.flawless,
-        'radiant': item.radiant,
-      });
+      final sparseData = getSparseJson();
+      await PocketBaseService.updateCloudCounters(sparseData);
     } catch (e) {
-      // TO DO LATER
+      if (kDebugMode) print('_syncSingleToCloud failed: $e');
     }
   }
 

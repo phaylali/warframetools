@@ -178,10 +178,10 @@ assets/
 | Category | Technology |
 |----------|------------|
 | Framework | Flutter 3.27+ |
-| State Management | Riverpod 2.6.1 |
+| State Management | Riverpod 3.2.0 |
 | Routing | GoRouter 14.x |
 | Backend | PocketBase 0.23.2 (optional) |
-| Local Storage | sqlite3 1.5.1 + SharedPreferences |
+| Local Storage | sqlite3 + Drift |
 | Network Images | Cached Network Image |
 
 ## Contributing

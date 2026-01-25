@@ -1,5 +1,5 @@
 class AppConstants {
-  static const String appName = 'Warframe Helper';
+  static const String appName = 'Warframe Tools';
   static const String themeKey = 'theme_mode';
   static const String relicDataKey = 'relic_data';
 
@@ -12,4 +12,7 @@ class AppConstants {
   // Asset paths
   static const String relicDataPath = 'assets/data/relic_data.json';
   static const String imagesPath = 'assets/images/';
+
+  // Layout
+  static const double maxButtonWidth = 400.0;
 }

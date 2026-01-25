@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import '../../core/constants/app_constants.dart';
+import '../../core/services/pocketbase_service.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 final Uri _url = Uri.parse(
@@ -54,21 +56,48 @@ class AppDrawer extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Icon(
-                      Icons.games,
-                      size: 48,
-                      color: Theme.of(context).colorScheme.onPrimaryContainer,
+                    CircleAvatar(
+                      radius: 32,
+                      backgroundColor: Theme.of(context).colorScheme.surface,
+                      backgroundImage:
+                          PocketBaseService.currentUserAvatarUrl != null
+                              ? NetworkImage(
+                                  PocketBaseService.currentUserAvatarUrl!)
+                              : null,
+                      child: PocketBaseService.currentUserAvatarUrl == null
+                          ? Text(
+                              (PocketBaseService.currentUserName ?? 'Unknown')
+                                      .isNotEmpty
+                                  ? (PocketBaseService.currentUserName ??
+                                          'Unknown')[0]
+                                      .toUpperCase()
+                                  : '?',
+                              style: const TextStyle(fontSize: 24),
+                            )
+                          : null,
                     ),
-                    const SizedBox(height: 8),
+                    const SizedBox(height: 12),
                     Text(
-                      AppConstants.appName,
-                      style:
-                          Theme.of(context).textTheme.headlineSmall?.copyWith(
-                                color: Theme.of(context)
-                                    .colorScheme
-                                    .onPrimaryContainer,
-                              ),
+                      PocketBaseService.currentUserName ?? 'Guest',
+                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                            color: Theme.of(context)
+                                .colorScheme
+                                .onPrimaryContainer,
+                            fontWeight: FontWeight.bold,
+                          ),
                     ),
+                    if (PocketBaseService.currentUserEmail != null) ...[
+                      const SizedBox(height: 4),
+                      Text(
+                        PocketBaseService.currentUserEmail!,
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .onPrimaryContainer
+                                  .withValues(alpha: 0.8),
+                            ),
+                      ),
+                    ],
                   ],
                 ),
               ),
@@ -121,16 +150,19 @@ class AppDrawer extends StatelessWidget {
     );
   }
 
-  void _showAboutDialog(BuildContext context) {
+  Future<void> _showAboutDialog(BuildContext context) async {
+    final packageInfo = await PackageInfo.fromPlatform();
+    if (!context.mounted) return;
+
     var heart = const Icon(Icons.favorite, color: Colors.redAccent);
     showAboutDialog(
       context: context,
       applicationName: AppConstants.appName,
-      applicationVersion: '1.0.1',
+      applicationVersion: packageInfo.version,
       applicationIcon: const Icon(Icons.games, size: 64),
       children: [
         const Text(
-          'A helper app for Warframe players with useful tools and counters.',
+          'Tools to help Warframe players and improve their experience.',
         ),
         Row(
           children: [
@@ -148,15 +180,29 @@ void _showPrivacyDialog(BuildContext context) {
   showDialog(
     context: context,
     builder: (BuildContext context) {
-      return const SimpleDialog(
-        title: Text("Privacy Policy"),
-        children: [
-          Padding(
-            padding: EdgeInsets.fromLTRB(80, 20, 80, 20),
-            child: FilledButton(
-              onPressed: _launchUrl,
-              child: Text("Check Privacy Policy"),
-            ),
+      return AlertDialog(
+        title: const Row(
+          children: [
+            Icon(Icons.privacy_tip),
+            SizedBox(width: 8),
+            Text("Privacy Policy"),
+          ],
+        ),
+        content: const Text(
+          "We value your privacy. Please review our detailed privacy policy to understand how we handle your data.",
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text("Close"),
+          ),
+          FilledButton.icon(
+            onPressed: () {
+              Navigator.pop(context);
+              _launchUrl();
+            },
+            icon: const Icon(Icons.open_in_new, size: 18),
+            label: const Text("View Policy"),
           ),
         ],
       );
