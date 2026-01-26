@@ -42,6 +42,24 @@ dev_dependencies:
   build_runner: 
   json_serializable: 
   drift_dev: 
+  package_rename: ^1.6.4
+
+package_rename_config:
+  android:
+    app_name: WarframeTools
+    package_name: com.omniversify.warframe.warframe_tools
+  ios:
+    app_name: WarframeTools
+    bundle_name: com.omniversify.warframe.warframe_tools
+  linux:
+    app_name: WarframeTools
+    package_name: com.omniversify.warframe.warframe_tools
+  windows:
+    app_name: WarframeTools
+    package_name: com.omniversify.warframe.warframe_tools
+  macos:
+    app_name: WarframeTools
+    package_name: com.omniversify.warframe.warframe_tools
 
 flutter:
   uses-material-design: true

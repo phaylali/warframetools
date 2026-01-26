@@ -171,6 +171,11 @@ class AppDrawer extends StatelessWidget {
             const Text(' in Morocco by Omniversify'),
           ],
         ),
+        const SizedBox(height: 12),
+        const Text(
+          'Omniversify © 2026',
+          style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+        ),
       ],
     );
   }
