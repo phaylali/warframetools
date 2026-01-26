@@ -43,6 +43,7 @@ dev_dependencies:
   json_serializable: 
   drift_dev: 
   package_rename: ^1.6.4
+  
 
 package_rename_config:
   android:
