@@ -25,7 +25,7 @@ void main() async {
     _handleDeepLink(initialLink);
   }
 
-  runApp(const ProviderScope(child: WarframeHelperApp()));
+  runApp(const ProviderScope(child: WarframeToolsApp()));
 }
 
 void _handleDeepLink(Uri uri) {

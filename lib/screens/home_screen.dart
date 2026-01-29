@@ -22,18 +22,6 @@ class HomeScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'Welcome to Warframe Tools',
-              style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                    color: Theme.of(context).colorScheme.outline,
-                  ),
-            ),
-            const SizedBox(height: 4),
-            Text(
-              'Omniversify © 2026',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-            const SizedBox(height: 8),
-            Text(
               'Your companion app for Warframe with useful tools and utilities.',
               style: Theme.of(context).textTheme.bodyLarge,
             ),

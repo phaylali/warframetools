@@ -4,8 +4,8 @@ import 'core/theme/app_theme.dart';
 import 'providers/theme_provider.dart';
 import 'router/app_router.dart';
 
-class WarframeHelperApp extends ConsumerWidget {
-  const WarframeHelperApp({super.key});
+class WarframeToolsApp extends ConsumerWidget {
+  const WarframeToolsApp({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {

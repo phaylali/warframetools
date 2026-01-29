@@ -159,7 +159,8 @@ class AppDrawer extends StatelessWidget {
       context: context,
       applicationName: AppConstants.appName,
       applicationVersion: packageInfo.version,
-      applicationIcon: const Icon(Icons.games, size: 64),
+      applicationIcon:
+          Image.asset('assets/images/logo.png', width: 64, height: 64),
       children: [
         const Text(
           'Tools to help Warframe players and improve their experience.',
