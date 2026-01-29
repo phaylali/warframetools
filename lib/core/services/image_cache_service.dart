@@ -32,31 +32,37 @@ class ImageCacheService {
       await cacheDir.create(recursive: true);
     }
 
-    for (int i = 0; i < _imageUrls.length; i++) {
-      final url = _imageUrls[i];
-      final fileName = 'relic_$i.png';
-      final filePath = '${cacheDir.path}/$fileName';
-      final file = File(filePath);
+    // Start caching in parallel
+    Future<void> cacheInitTask() async {
+      for (int i = 0; i < _imageUrls.length; i++) {
+        final url = _imageUrls[i];
+        final fileName = 'relic_$i.png';
+        final filePath = '${cacheDir.path}/$fileName';
+        final file = File(filePath);
 
-      if (!await file.exists()) {
-        try {
-          final response = await http.get(Uri.parse(url));
-          if (response.statusCode == 200) {
-            await file.writeAsBytes(response.bodyBytes);
-          }
-        } catch (_) {}
+        if (!await file.exists()) {
+          try {
+            final response = await http.get(Uri.parse(url));
+            if (response.statusCode == 200) {
+              await file.writeAsBytes(response.bodyBytes);
+            }
+          } catch (_) {}
+        }
+
+        _urlToLocalPath[url] = filePath;
       }
 
-      _urlToLocalPath[url] = filePath;
+      _typeToLocalPath['lith'] = _urlToLocalPath[_imageUrls[0]] ?? '';
+      _typeToLocalPath['meso'] = _urlToLocalPath[_imageUrls[1]] ?? '';
+      _typeToLocalPath['neo'] = _urlToLocalPath[_imageUrls[2]] ?? '';
+      _typeToLocalPath['axi'] = _urlToLocalPath[_imageUrls[3]] ?? '';
+      _typeToLocalPath['requiem'] = _urlToLocalPath[_imageUrls[4]] ?? '';
+
+      _isInitialized = true;
     }
 
-    _typeToLocalPath['lith'] = _urlToLocalPath[_imageUrls[0]] ?? '';
-    _typeToLocalPath['meso'] = _urlToLocalPath[_imageUrls[1]] ?? '';
-    _typeToLocalPath['neo'] = _urlToLocalPath[_imageUrls[2]] ?? '';
-    _typeToLocalPath['axi'] = _urlToLocalPath[_imageUrls[3]] ?? '';
-    _typeToLocalPath['requiem'] = _urlToLocalPath[_imageUrls[4]] ?? '';
-
-    _isInitialized = true;
+    // We don't await this task here to allow main() to continue
+    cacheInitTask();
   }
 
   static String? getLocalImagePath(String imageUrl) {

@@ -31,10 +31,11 @@ A modern Flutter application for managing your Warframe void relic inventory. Tr
 - **Total Available** - See how many relics exist for each type in the database
 - **Statistics** - Detailed breakdown of your entire collection
 
-### Backup & Sync
-- **PocketBase Integration** - Sync your inventory with a backend server (optional)
-- **Local Backup** - Export/import data as JSON files
-- **Cloud Sync** - Push and pull data from your PocketBase instance
+- **PocketBase Integration**: Sync your inventory with a backend server (optional)
+- **Local Backup**: Export/import data as JSON files
+- **Cloud Sync**: Push and pull data from your PocketBase instance
+- **Account Customization**: Change username, email, and choose from a collection of random avatars.
+- **Email Verification**: Dedicated flow for verifying user accounts.
 
 ### Modern UI
 - **Material 3 Design** - Clean, modern interface
@@ -196,9 +197,9 @@ assets/
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-## License
-
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+Copyright © 2026 Omniversify. All rights reserved.
 
 ## Acknowledgments
 

@@ -31,13 +31,14 @@ class PocketBaseService {
       ),
     );
 
-    try {
-      await _pb!.health.check();
+    // Perform health check in background
+    _pb!.health.check().then((_) {
       if (kDebugMode) print('PocketBase connected successfully to $pbUrl');
-    } catch (e) {
+    }).catchError((e) {
       if (kDebugMode) print('PocketBase connection failed: $e');
-      _pb = null;
-    }
+      // We don't nullify _pb because we still want the authStore functionality
+      // even if the server is temporarily unreachable.
+    });
   }
 
   static bool get isConnected => _pb != null;

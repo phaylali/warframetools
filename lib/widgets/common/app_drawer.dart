@@ -165,12 +165,17 @@ class AppDrawer extends StatelessWidget {
         const Text(
           'Tools to help Warframe players and improve their experience.',
         ),
-        Row(
-          children: [
-            const Text('Made with '),
-            heart,
-            const Text(' in Morocco by Omniversify'),
-          ],
+        Text.rich(
+          TextSpan(
+            children: [
+              const TextSpan(text: 'Made with '),
+              WidgetSpan(
+                child: heart,
+                alignment: PlaceholderAlignment.middle,
+              ),
+              const TextSpan(text: ' in Morocco by Omniversify'),
+            ],
+          ),
         ),
         const SizedBox(height: 12),
         const Text(
