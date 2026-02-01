@@ -1,23 +1,23 @@
-# WarframeTools - Void Relic Inventory Manager
+# WarframeTools - Moroccan Luxury Void Relic Manager
 
-A modern Flutter application for managing your Warframe void relic inventory. Track relics across all conditions (Intact, Exceptional, Flawless, Radiant), sync with a PocketBase backend, and organize your farming sessions efficiently.
+A premium, modern Flutter application for managing your Warframe void relic inventory. Wrapped in a stunning **Moroccan Luxury** aesthetic with Black & Gold accents, it offers both **Moon Mode** (Modern Dark) and **Space Mode** (OLED Pure Black).
 
-**Offline-First Architecture**: All 690 relics are bundled in the app. Works without an internet connection!
+**Offline-First Architecture**: All 724 relics are bundled in the app. Works without an internet connection!
 
 ![WarframeTools](https://play.google.com/store/apps/details?id=com.omniversify.warframe.warframe_tools&hl=en)
 
 ## Features
 
 ### Relic Tracking
-- **690 Relics** across 5 types: Lith, Meso, Neo, Axi, Requiem
-- **4-Condition Counter System** - Track each relic separately by condition:
-  - Intact (indicated with transparent circle)
-  - Exceptional (cyan circle)
-  - Flawless (cyan circle)
-  - Radiant (cyan circle)
-- **Natural Sorting** - Relics sort correctly (Neo Z1, Z2, Z10, Z11 not Z1, Z10, Z11, Z2)
-- **Search** - Find any relic instantly
-- **Filter by Type** - View Lith, Meso, Neo, Axi, or Requiem relics
+- **724 Relics** across 5 types: Lith, Meso, Neo, Axi, Requiem
+- **4-Condition Counter System** - Track each relic separately:
+  - Intact (transparent border)
+  - Exceptional (gold circle)
+  - Flawless (gold circle)
+  - Radiant (gold circle)
+- **Natural Sorting** - Relics sort correctly (Neo Z1, Z2, Z10, Z11) with Unvaulted items priority.
+- **Search** - Fast, stadium-shaped search bar.
+- **Filter by Type** - View Lith, Meso, Neo, Axi, or Requiem relics.
 
 ### Offline-First Design
 - **All data bundled** - 690 relics included in APK
@@ -37,11 +37,14 @@ A modern Flutter application for managing your Warframe void relic inventory. Tr
 - **Account Customization**: Change username, email, and choose from a collection of random avatars.
 - **Email Verification**: Dedicated flow for verifying user accounts.
 
-### Modern UI
-- **Material 3 Design** - Clean, modern interface
-- **Dark/Light Theme** - Automatic theme support
-- **Image Preview** - Tap relic images for full-size preview
-- **Wiki Integration** - Quick access to Warframe wiki
+### Modern Luxury UI
+- **Moroccan Luxury Design** - High-contrast Black & Gold theme.
+- **Moon & Space Modes** - Choose between soft modern dark (`#1E1E1E`) or pure OLED black (`#000000`).
+- **Fading Gold Ornamentation** - Subtle 20% gradient fade for borders and app bar highlights.
+- **Premium Typography** - Uses `Cinzel` for elegant titles and `Source Sans 3` for sharp body text.
+- **Unified Dialogs** - Consistent 320px width across all informational and account screens.
+- **Image Preview** - Tap any relic to see its full-size visual.
+- **Wiki & Market Integration** - Instant links to Warframe Wiki and warframe.market.
 
 ## Screenshots
 

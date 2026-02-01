@@ -1,6 +1,6 @@
 # Privacy Policy
 
-**Last Updated: 2026-01-25**
+**Last Updated: 2026-02-01**
 
 Omniversify ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, and share information when you use the WarframeTools application.
 

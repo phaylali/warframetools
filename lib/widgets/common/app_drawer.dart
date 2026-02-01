@@ -3,7 +3,9 @@ import 'package:go_router/go_router.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import '../../core/constants/app_constants.dart';
 import '../../core/services/pocketbase_service.dart';
+import '../../core/theme/app_theme.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'fading_gold_divider.dart';
 
 final Uri _url = Uri.parse(
   'https://documents.omniversify.com/warframe_tools.html',
@@ -49,8 +51,8 @@ class AppDrawer extends StatelessWidget {
             padding: EdgeInsets.zero,
             children: [
               DrawerHeader(
-                decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.primaryContainer,
+                decoration: const BoxDecoration(
+                  color: Colors.transparent,
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -58,7 +60,9 @@ class AppDrawer extends StatelessWidget {
                   children: [
                     CircleAvatar(
                       radius: 32,
-                      backgroundColor: Theme.of(context).colorScheme.surface,
+                      backgroundColor:
+                          Theme.of(context).colorScheme.primary.withAlpha(50),
+                      foregroundColor: Theme.of(context).colorScheme.primary,
                       backgroundImage:
                           PocketBaseService.currentUserAvatarUrl != null
                               ? NetworkImage(
@@ -72,7 +76,11 @@ class AppDrawer extends StatelessWidget {
                                           'Unknown')[0]
                                       .toUpperCase()
                                   : '?',
-                              style: const TextStyle(fontSize: 24),
+                              style: TextStyle(
+                                fontSize: 24,
+                                color: Theme.of(context).colorScheme.primary,
+                                fontWeight: FontWeight.bold,
+                              ),
                             )
                           : null,
                     ),
@@ -80,9 +88,7 @@ class AppDrawer extends StatelessWidget {
                     Text(
                       PocketBaseService.currentUserName ?? 'Guest',
                       style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                            color: Theme.of(context)
-                                .colorScheme
-                                .onPrimaryContainer,
+                            color: Theme.of(context).colorScheme.primary,
                             fontWeight: FontWeight.bold,
                           ),
                     ),
@@ -93,8 +99,8 @@ class AppDrawer extends StatelessWidget {
                         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                               color: Theme.of(context)
                                   .colorScheme
-                                  .onPrimaryContainer
-                                  .withValues(alpha: 0.8),
+                                  .primary
+                                  .withAlpha(180),
                             ),
                       ),
                     ],
@@ -125,7 +131,7 @@ class AppDrawer extends StatelessWidget {
                   context.go(AppConstants.settingsRoute);
                 },
               ),
-              const Divider(),
+              const FadingGoldDivider(verticalMargin: 8),
               ListTile(
                 leading: const Icon(Icons.info),
                 title: const Text('About'),
@@ -154,35 +160,71 @@ class AppDrawer extends StatelessWidget {
     final packageInfo = await PackageInfo.fromPlatform();
     if (!context.mounted) return;
 
-    var heart = const Icon(Icons.favorite, color: Colors.redAccent);
-    showAboutDialog(
+    showDialog(
       context: context,
-      applicationName: AppConstants.appName,
-      applicationVersion: packageInfo.version,
-      applicationIcon:
-          Image.asset('assets/images/logo.png', width: 64, height: 64),
-      children: [
-        const Text(
-          'Tools to help Warframe players and improve their experience.',
+      builder: (context) => AlertDialog(
+        title: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              AppConstants.appName,
+              style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                    color: AppTheme.goldColor,
+                    fontWeight: FontWeight.bold,
+                  ),
+            ),
+            const SizedBox(height: 8),
+            const FadingGoldDivider(horizontalMargin: 0),
+          ],
         ),
-        Text.rich(
-          TextSpan(
+        content: SizedBox(
+          width: 320,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
             children: [
-              const TextSpan(text: 'Made with '),
-              WidgetSpan(
-                child: heart,
-                alignment: PlaceholderAlignment.middle,
+              Image.asset('assets/images/logo.png', width: 64, height: 64),
+              const SizedBox(height: 16),
+              const Text(
+                'Tools to help Warframe players and improve their experience.',
+                textAlign: TextAlign.center,
               ),
-              const TextSpan(text: ' in Morocco by Omniversify'),
+              const SizedBox(height: 12),
+              Text.rich(
+                TextSpan(
+                  children: [
+                    const TextSpan(text: 'Made with '),
+                    WidgetSpan(
+                      child: const Icon(Icons.favorite,
+                          color: Colors.redAccent, size: 18),
+                      alignment: PlaceholderAlignment.middle,
+                    ),
+                    const TextSpan(text: ' in Morocco by Omniversify'),
+                  ],
+                ),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 24),
+              Text(
+                'Version ${packageInfo.version}',
+                style: Theme.of(context).textTheme.bodySmall,
+              ),
+              Text(
+                'Omniversify © 2026',
+                style: Theme.of(context)
+                    .textTheme
+                    .bodySmall
+                    ?.copyWith(fontWeight: FontWeight.bold),
+              ),
             ],
           ),
         ),
-        const SizedBox(height: 12),
-        const Text(
-          'Omniversify © 2026',
-          style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
-        ),
-      ],
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Close'),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -192,15 +234,19 @@ void _showPrivacyDialog(BuildContext context) {
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        title: const Row(
+        title: const Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
-            Icon(Icons.privacy_tip),
-            SizedBox(width: 8),
-            Text("Privacy Policy"),
+            Text('Privacy Policy'),
+            SizedBox(height: 8),
+            FadingGoldDivider(horizontalMargin: 0),
           ],
         ),
-        content: const Text(
-          "We value your privacy. Please review our detailed privacy policy to understand how we handle your data.",
+        content: const SizedBox(
+          width: 320,
+          child: Text(
+            "We value your privacy. Please review our detailed privacy policy to understand how we handle your data.",
+          ),
         ),
         actions: [
           TextButton(

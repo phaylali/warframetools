@@ -7,6 +7,7 @@ import '../core/constants/app_constants.dart';
 import '../widgets/common/app_toolbar.dart';
 import '../widgets/common/avatar_chooser_dialog.dart';
 import '../widgets/relic/sync_conflict_dialog.dart';
+import '../widgets/common/fading_gold_divider.dart';
 
 class AccountScreen extends ConsumerStatefulWidget {
   const AccountScreen({super.key});
@@ -69,7 +70,14 @@ class _AccountScreenState extends ConsumerState<AccountScreen> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Sign Out'),
+        title: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Text('Sign Out'),
+            const SizedBox(height: 8),
+            const FadingGoldDivider(horizontalMargin: 0),
+          ],
+        ),
         content: const Text('Are you sure you want to sign out?'),
         actions: [
           TextButton(
@@ -139,17 +147,15 @@ class _AccountScreenState extends ConsumerState<AccountScreen> {
     return Card(
       elevation: 0,
       color: _serverConnected
-          ? Theme.of(context)
-              .colorScheme
-              .primaryContainer
-              .withValues(alpha: 0.3)
-          : Theme.of(context).colorScheme.errorContainer.withValues(alpha: 0.3),
+          ? Theme.of(context).colorScheme.primary.withAlpha(20)
+          : Theme.of(context).colorScheme.error.withAlpha(20),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
         side: BorderSide(
           color: _serverConnected
-              ? Theme.of(context).colorScheme.primary.withValues(alpha: 0.2)
-              : Theme.of(context).colorScheme.error.withValues(alpha: 0.2),
+              ? Theme.of(context).colorScheme.primary.withAlpha(100)
+              : Theme.of(context).colorScheme.error.withAlpha(100),
+          width: 1.5,
         ),
       ),
       child: Padding(
@@ -326,7 +332,14 @@ class _AccountScreenState extends ConsumerState<AccountScreen> {
       context: context,
       builder: (context) => StatefulBuilder(
         builder: (context, setState) => AlertDialog(
-          title: const Text('Delete Account'),
+          title: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Text('Delete Account'),
+              const SizedBox(height: 8),
+              const FadingGoldDivider(horizontalMargin: 0),
+            ],
+          ),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -429,7 +442,14 @@ class _AccountScreenState extends ConsumerState<AccountScreen> {
       barrierDismissible: false,
       builder: (context) => StatefulBuilder(
         builder: (context, setDialogState) => AlertDialog(
-          title: const Text('Change Password'),
+          title: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Text('Change Password'),
+              const SizedBox(height: 8),
+              const FadingGoldDivider(horizontalMargin: 0),
+            ],
+          ),
           content: SingleChildScrollView(
             child: Column(
               mainAxisSize: MainAxisSize.min,
@@ -567,7 +587,6 @@ class _AccountScreenState extends ConsumerState<AccountScreen> {
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(
               content: Text('Password changed. Logging out...'),
-              backgroundColor: Colors.blue,
             ),
           );
           // Wait briefly then sign out
@@ -590,7 +609,14 @@ class _AccountScreenState extends ConsumerState<AccountScreen> {
       barrierDismissible: false,
       builder: (context) => StatefulBuilder(
         builder: (context, setDialogState) => AlertDialog(
-          title: const Text('Change Email'),
+          title: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Text('Change Email'),
+              const SizedBox(height: 8),
+              const FadingGoldDivider(horizontalMargin: 0),
+            ],
+          ),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -707,7 +733,6 @@ class _AccountScreenState extends ConsumerState<AccountScreen> {
             const SnackBar(
               content: Text(
                   'Email change requested. Logging out... Please check your new email to confirm.'),
-              backgroundColor: Colors.blue,
             ),
           );
           // Wait briefly then sign out
@@ -730,7 +755,14 @@ class _AccountScreenState extends ConsumerState<AccountScreen> {
       barrierDismissible: false,
       builder: (context) => StatefulBuilder(
         builder: (context, setDialogState) => AlertDialog(
-          title: const Text('Change Username'),
+          title: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Text('Change Username'),
+              const SizedBox(height: 8),
+              const FadingGoldDivider(horizontalMargin: 0),
+            ],
+          ),
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [

@@ -134,11 +134,11 @@ class _SettingsScreenState extends ConsumerState<SettingsScreen> {
             const SizedBox(height: 12),
             Card(
               child: ListTile(
-                leading: const Icon(Icons.dark_mode),
-                title: const Text('Dark Mode'),
+                leading: Icon(isDark ? Icons.brightness_3 : Icons.brightness_2),
+                title: const Text('Space Mode'),
                 subtitle: Text(isDark
-                    ? 'Currently in dark mode'
-                    : 'Currently in light mode'),
+                    ? 'Currently in Space Mode (Pure Black)'
+                    : 'Currently in Moon Mode (Modern Dark)'),
                 trailing: Switch(
                   value: isDark,
                   onChanged: (value) {

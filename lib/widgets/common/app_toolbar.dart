@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../core/constants/app_constants.dart';
+import '../../core/theme/app_theme.dart';
 
 class AppToolbar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
@@ -31,16 +32,22 @@ class AppToolbar extends StatelessWidget implements PreferredSizeWidget {
       leading: leading ?? _buildLeading(context),
       title: Text(
         title,
-        style: Theme.of(context).appBarTheme.titleTextStyle?.copyWith(
-                  fontWeight: FontWeight.w600,
-                ) ??
-            Theme.of(context).textTheme.titleLarge?.copyWith(
-                  fontWeight: FontWeight.w600,
-                ),
+        style: Theme.of(context).appBarTheme.titleTextStyle,
       ),
       centerTitle: true,
       actions: actions,
       elevation: 0,
+      flexibleSpace: Container(
+        alignment: Alignment.bottomCenter,
+        child: Container(
+          height: 1,
+          width: double.infinity,
+          margin: const EdgeInsets.symmetric(horizontal: 16),
+          decoration: BoxDecoration(
+            gradient: AppTheme.goldFadeGradient,
+          ),
+        ),
+      ),
     );
   }
 
@@ -77,15 +84,21 @@ class HomeAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       title: Text(
         AppConstants.appName,
-        style: Theme.of(context).appBarTheme.titleTextStyle?.copyWith(
-                  fontWeight: FontWeight.w600,
-                ) ??
-            Theme.of(context).textTheme.titleLarge?.copyWith(
-                  fontWeight: FontWeight.w600,
-                ),
+        style: Theme.of(context).appBarTheme.titleTextStyle,
       ),
       centerTitle: true,
       elevation: 0,
+      flexibleSpace: Container(
+        alignment: Alignment.bottomCenter,
+        child: Container(
+          height: 1,
+          width: double.infinity,
+          margin: const EdgeInsets.symmetric(horizontal: 16),
+          decoration: BoxDecoration(
+            gradient: AppTheme.goldFadeGradient,
+          ),
+        ),
+      ),
     );
   }
 }

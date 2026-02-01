@@ -5,7 +5,7 @@ This guide explains how to set up PocketBase for the WarframeTools app authentic
 ## Prerequisites
 
 - PocketBase 0.23.2 or later
-- Google Cloud Console account (for OAuth2)
+- SMTP credentials (for password reset and verification)
 
 ## 1. Running PocketBase
 
@@ -81,72 +81,7 @@ The `users` collection should exist by default. Configure it as follows:
 | List/View | `""` (public read-only) |
 | Create/Update/Delete | `@request.auth.id != ""` (admin only) |
 
-### 3.3 Create `avatars` Collection
-
-**Purpose:** Predefined avatar images for users
-
-**Fields:**
-
-| Field Name | Type | Required | Notes |
-|------------|------|----------|-------|
-| name | Text | Yes | Short name for avatar |
-| imageUrl | URL | Yes | Public link to the avatar image |
-
-**API Rules:**
-
-| Rule Type | Rule |
-|-----------|------|
-| List/View | `""` (public read-only) |
-| Create/Update/Delete | `@request.auth.id != ""` (admin only) |
-
-## 4. Google OAuth2 Setup
-
-### 4.1 Create Google Cloud Project
-
-1. Go to [Google Cloud Console](https://console.cloud.google.com/)
-2. Create a new project or select existing
-3. Navigate to APIs & Services > Credentials
-
-### 4.2 Create OAuth 2.0 Client ID
-
-1. Click "Create Credentials" > "OAuth client ID"
-2. Application type:
-   - **Web Application** for browser-based OAuth
-   - **Android** for Android app (requires package name and SHA-1)
-   - **iOS** for iOS app (requires bundle ID)
-
-3. Configure authorized redirect URIs:
-
-   ```
-   http://localhost:8090/oauth2-redirect
-   https://your-production-domain.com/oauth2-redirect
-   ```
-
-4. Note your Client ID and Client Secret
-
-### 4.3 Enable Google+ API
-
-1. Go to APIs & Services > Library
-2. Search for "Google+ API" or "Google Identity Services"
-3. Enable the API
-
-### 4.4 Configure PocketBase OAuth2 Settings
-
-1. Log in to PocketBase admin UI
-2. Navigate to Settings > Auth providers
-3. Click "Configure" on Google provider
-4. Enter your Client ID and Client Secret
-5. Save settings
-
-### 4.5 Required Scopes
-
-The Google OAuth2 should request these scopes:
-
-- `openid`
-- `email`
-- `profile`
-
-## 5. Environment Variables
+## 4. Environment Variables
 
 Update your `.env` file:
 
@@ -179,12 +114,6 @@ For email verification and password reset:
 1. Create a test user via the app's sign-up flow
 2. Try logging in with credentials
 
-### Test Google OAuth
-
-1. Click "Sign in with Google" in the app
-2. Complete Google authentication
-3. Verify user appears in PocketBase admin UI
-
 ## 8. Security Recommendations
 
 ### API Rules Best Practices
@@ -210,24 +139,7 @@ Always use HTTPS in production for:
 
 ## 9. Troubleshooting
 
-### OAuth Redirect Issues
-
-If Google OAuth fails with redirect errors:
-
-1. Verify redirect URIs in Google Cloud Console
-2. Ensure exact match (no trailing slashes)
-3. Check PocketBase logs: `http://localhost:8090/api/debug`
-
-### Authentication Not Working
-
-1. Check PocketBase logs
-2. Verify API rules are correct
-3. Ensure collections are created properly
-
-### User Data Not Syncing
-
-1. Verify server connection
-2. Check API rules allow read access to `relics_info` and `avatars`
+access to `relics_info` and `avatars`
 3. Confirm network connectivity
 
 ## 10. Production Deployment
@@ -262,4 +174,3 @@ docker cp ./backup_pb_data pocketbase:/pb/pb_data
 
 - [PocketBase Documentation](https://pocketbase.io/docs/)
 - [PocketBase GitHub](https://github.com/pocketbase/pocketbase)
-- [Google OAuth2 Documentation](https://developers.google.com/identity/protocols/oauth2)

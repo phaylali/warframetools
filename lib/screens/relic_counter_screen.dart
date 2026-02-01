@@ -7,6 +7,7 @@ import '../models/relic_item.dart';
 import '../providers/relic_provider.dart';
 import '../widgets/relic/relic_item_card.dart';
 import '../widgets/common/app_toolbar.dart';
+import '../widgets/common/fading_gold_divider.dart';
 
 final selectedFilterProvider = StateProvider<String>((ref) => 'All');
 final searchQueryProvider = StateProvider<String>((ref) => '');
@@ -94,21 +95,26 @@ class _RelicCounterScreenState extends ConsumerState<RelicCounterScreen> {
             child: Column(
               children: [
                 TextField(
-                  decoration: const InputDecoration(
+                  decoration: InputDecoration(
                     labelText: 'Search relics...',
-                    prefixIcon: Icon(Icons.search),
+                    prefixIcon: const Icon(Icons.search),
                     filled: true,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(24)),
-                      borderSide: BorderSide.none,
-                    ),
                     enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(24)),
-                      borderSide: BorderSide.none,
+                      borderRadius: const BorderRadius.all(Radius.circular(24)),
+                      borderSide: BorderSide(
+                        color: Theme.of(context)
+                            .colorScheme
+                            .primary
+                            .withAlpha(100),
+                        width: 1.5,
+                      ),
                     ),
                     focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(24)),
-                      borderSide: BorderSide.none,
+                      borderRadius: const BorderRadius.all(Radius.circular(24)),
+                      borderSide: BorderSide(
+                        color: Theme.of(context).colorScheme.primary,
+                        width: 2.0,
+                      ),
                     ),
                   ),
                   onChanged: (value) {
@@ -282,45 +288,39 @@ class _RelicCounterScreenState extends ConsumerState<RelicCounterScreen> {
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
         decoration: BoxDecoration(
           color: isSelected
-              ? Theme.of(context).colorScheme.primaryContainer
-              : Theme.of(context).colorScheme.surfaceContainerHighest,
+              ? Theme.of(context).colorScheme.primary.withAlpha(40)
+              : Colors.transparent,
           borderRadius: BorderRadius.circular(20),
           border: Border.all(
             color: isSelected
                 ? Theme.of(context).colorScheme.primary
-                : Colors.transparent,
+                : Theme.of(context).colorScheme.primary.withAlpha(60),
+            width: isSelected ? 1.5 : 1.0,
           ),
         ),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              label,
+              label.toUpperCase(),
               style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                    color: isSelected
-                        ? Theme.of(context).colorScheme.onPrimaryContainer
-                        : Theme.of(context).colorScheme.onSurfaceVariant,
+                    color: Theme.of(context).colorScheme.primary,
+                    fontWeight:
+                        isSelected ? FontWeight.bold : FontWeight.normal,
+                    letterSpacing: 1.1,
+                    fontSize: 12,
                   ),
             ),
             if (count > 0) ...[
-              const SizedBox(width: 6),
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                decoration: BoxDecoration(
-                  color: isSelected
-                      ? Theme.of(context).colorScheme.primary
-                      : Theme.of(context).colorScheme.outlineVariant,
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Text(
-                  '$count',
-                  style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                        color: isSelected
-                            ? Theme.of(context).colorScheme.onPrimary
-                            : Theme.of(context).colorScheme.onSurfaceVariant,
-                        fontWeight: FontWeight.bold,
-                      ),
-                ),
+              const SizedBox(width: 8),
+              Text(
+                '($count)',
+                style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                      color:
+                          Theme.of(context).colorScheme.primary.withAlpha(200),
+                      fontWeight:
+                          isSelected ? FontWeight.bold : FontWeight.normal,
+                    ),
               ),
             ],
           ],
@@ -361,7 +361,14 @@ class _RelicCounterScreenState extends ConsumerState<RelicCounterScreen> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Statistics'),
+        title: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Text('Statistics'),
+            const SizedBox(height: 8),
+            const FadingGoldDivider(horizontalMargin: 0),
+          ],
+        ),
         content: SingleChildScrollView(
           child: Column(
             mainAxisSize: MainAxisSize.min,
@@ -370,7 +377,7 @@ class _RelicCounterScreenState extends ConsumerState<RelicCounterScreen> {
               Text('Total Relics Owned: $totalItems'),
               Text('Relic Types Owned: $nonZeroItems'),
               Text('Total Relic Types: ${relicItems.length}'),
-              const Divider(),
+              const FadingGoldDivider(verticalMargin: 12, horizontalMargin: 0),
               Text('Lith: $lithCount'),
               Text('Meso: $mesoCount'),
               Text('Neo: $neoCount'),

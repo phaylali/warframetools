@@ -208,7 +208,7 @@ class RelicItemCard extends StatelessWidget {
     );
   }
 
-  Widget _buildCircle(bool isCyan, BuildContext context, VoidCallback onTap) {
+  Widget _buildCircle(bool isActive, BuildContext context, VoidCallback onTap) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
@@ -216,10 +216,12 @@ class RelicItemCard extends StatelessWidget {
         height: 20,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          color: isCyan ? Colors.cyan : Theme.of(context).colorScheme.surface,
+          color: isActive
+              ? Theme.of(context).colorScheme.primary
+              : Theme.of(context).colorScheme.surface,
           border: Border.all(
-            color: isCyan
-                ? Colors.cyan.shade700
+            color: isActive
+                ? Theme.of(context).colorScheme.primary
                 : Theme.of(context).colorScheme.outline,
             width: 1,
           ),
@@ -245,8 +247,12 @@ class RelicItemCard extends StatelessWidget {
           height: 26,
           alignment: Alignment.center,
           decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.primaryContainer,
-            borderRadius: BorderRadius.circular(6),
+            color: Colors.transparent,
+            borderRadius: BorderRadius.circular(4),
+            border: Border.all(
+              color: Theme.of(context).colorScheme.primary.withAlpha(150),
+              width: 1,
+            ),
           ),
           child: Padding(
             padding: const EdgeInsets.only(top: 4),
@@ -298,15 +304,20 @@ class RelicItemCard extends StatelessWidget {
                 children: [
                   Text(
                     item.name,
-                    style: Theme.of(context).textTheme.titleMedium,
+                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                          fontSize: 16,
+                          letterSpacing: 1.1,
+                        ),
                   ),
                   Text(
-                    item.unvaulted ? 'unvaulted' : 'vaulted',
+                    item.unvaulted ? 'UNVAULTED' : 'VAULTED',
                     style: Theme.of(context).textTheme.labelSmall?.copyWith(
                           color: item.unvaulted
-                              ? Colors.green
-                              : Colors.red.shade400,
-                          fontWeight: FontWeight.w500,
+                              ? const Color(0xFF81C784)
+                              : const Color(0xFFE57373),
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 1.2,
+                          fontSize: 10,
                         ),
                   ),
                 ],
