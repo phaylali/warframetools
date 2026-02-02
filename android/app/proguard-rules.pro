@@ -18,3 +18,6 @@
 
 # Avoid shrinking data models
 -keep class com.omniversify.warframe.warframe_tools.models.** { *; }
+
+# Google Play Core (suppress warnings for missing libraries)
+-dontwarn com.google.android.play.core.**
