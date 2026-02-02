@@ -34,3 +34,18 @@ Join your fellow Tenno and take the guesswork out of your next Void Fissure run.
 
 ---
 *Warframe and the Warframe logo are trademarks of Digital Extremes Ltd. WarframeTools is an independent app and is not affiliated with or endorsed by Digital Extremes.*
+
+---
+
+## 🚀 What's New (v1.1.0)
+
+*Copy the text below into the "What's New" section in the Play Store Console (Max 500 characters):*
+
+v1.1.0 - Moroccan Luxury Upgrade
+• New Moroccan Luxury UI overhaul with premium Gold accents.
+• Introduced Moon Mode (Modern Dark) and Space Mode (Pure Black).
+• Refined typography using Cinzel for titles and Source Sans 3 for body text.
+• Unified dialog styling and improved layout consistency.
+• High-contrast gold condition indicators for clearer inventory tracking.
+• Build system stabilization for improved performance.
+• General UI refinements and bug fixes.
