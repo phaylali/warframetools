@@ -1,6 +1,8 @@
 # WarframeTools - Moroccan Luxury Void Relic Manager
 
-A premium, modern Flutter application for managing your Warframe void relic inventory. Wrapped in a stunning **Moroccan Luxury** aesthetic with Black & Gold accents, it offers both **Moon Mode** (Modern Dark) and **Space Mode** (OLED Pure Black).
+Track your Warframe void relics, manage inventory, and sync across devices.
+
+A premium, modern Flutter application 🦋 for managing your Warframe void relic inventory 🔮. Wrapped in a stunning **Moroccan Luxury** 🕌 aesthetic with Black & Gold accents ✨, it offers both **Moon Mode** 🌙 (Modern Dark) and **Space Mode** 🌌 (OLED Pure Black).
 
 **Offline-First Architecture**: All 724 relics are bundled in the app. Works without an internet connection!
 
