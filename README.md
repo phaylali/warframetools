@@ -2,7 +2,7 @@
 
 Track your Warframe void relics, manage inventory, and sync across devices.
 
-A premium, modern Flutter application 🦋 for managing your Warframe void relic inventory 🔮. Wrapped in a stunning **Moroccan Luxury** 🕌 aesthetic with Black & Gold accents ✨, it offers both **Moon Mode** 🌙 (Modern Dark) and **Space Mode** 🌌 (OLED Pure Black).
+A modern Flutter application 🦋 for managing your Warframe void relic inventory 🔮. Track relics across all conditions (Intact ⚪, Exceptional 🥉, Flawless 🥈, Radiant 🌟), sync with a PocketBase backend ☁️, and organize your farming sessions 🚜 efficiently ⚡.
 
 **Offline-First Architecture**: All 724 relics are bundled in the app. Works without an internet connection!
 
